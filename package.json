@@ -4,7 +4,7 @@
   "description": "Bookmarkr - sort your bookmarks",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss public/css/tailwind.css -o public/build/tailwind.css",
     "start": "node server.js"
   },
   "repository": {
@@ -18,11 +18,15 @@
   },
   "homepage": "https://github.com/Kane-R/Project2#readme",
   "dependencies": {
+    "autoprefixer": "^9.8.0",
     "config.json": "0.0.4",
     "express": "^4.17.1",
+    "live-server": "^1.2.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.11"
+    "postcss-cli": "^7.1.1",
+    "sequelize": "^5.21.11",
+    "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
     "sequelize-cli": "^5.5.1"
