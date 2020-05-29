@@ -10,118 +10,77 @@
 </head>
 
 <body class="h-full">
-    <nav class="flex justify-between flex-wrap bg-teal-500 p-6 border-solid border-b-2 border-gray-600">
-        <div class="flex items-center text-white">
-            <img src="https://img.icons8.com/dusk/64/000000/book.png"/>  
-            <span class="font-bold text-yellow-500 text-3xl font-mono tracking-tight pr-16">BookMark-R</span>
-        </div>
-
-        <form class="w-7/12 mt-2" action="/" method="post">
-            <label
-                class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
-                for="addTab">
-                Add Bookmark URL
-            </label>
-            <input
-                class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="addTab" type="text" placeholder="www.bookmark-r.com">
-            </div>
-        </form>
-        <div class="items-center">
-            <img class="w-16 h-16 mr-2 inline-block rounded-full mr-5" src="./assets/img/default.jpg"
-                alt="portfolio icon">
-        </div>
-    </nav>
 
     <div class="min-h-full relative md:flex">
         <div class="flex-none w-1/6 md:max-w-xs bg-purple-300 text-white border-solid border-r-2 border-gray-600">
-            <div class="flow-root pt-8">
-                <button id="allFolders"
-                    class="bg-blue-500 w-full inline-flex items-center hover:bg-blue-700 text-white font-bold py-2 px-5 rounded">
-                    <svg class="w-10 h-10 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M20 6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h7.41l2 2H20zM4 6v12h16V8h-7.41l-2-2H4zm9 6h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2v-2a1 1 0 0 1 2 0v2z "/></svg>
-                    <span>All bookmarks</span>
-                </button>
-            </div>
+
             <div class="flow-root pt-1">
-                <div class="my-2 block">
-                <button id="folder1"
-                    class="bg-red-500 w-full inline-flex items-center hover:bg-red-700 text-white font-bold py-2 px-5 rounded">
-                    <svg class="w-10 h-10 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"/></svg>
-                    <span>University</span>
-                </button>
-            </div>
-            </div>
-            <div class="flow-root">
-                <div class="my-2 block">
-                    <svg class="fill-current w-full w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/></svg>
+                <div class="flex items-center text-white">
+                    <img src="https://img.icons8.com/dusk/64/000000/book.png" />
+                    <span class="font-bold text-yellow-500 text-3xl font-mono tracking-tight pr-16">BookMark-R</span>
                 </div>
             </div>
             <div class="flex items-stretch">
-                <div class="my-4 block w-full inline-flex pl-2 items-center font-extrabold text-2xl">
-                    <svg class="w-12 h-12 float-left fill-current items-center text-black px-1 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
-                <span class="text-black">Available Tags</span>
-            </div>
             </div>
             <div class="items-stretch">
                 <div class="text-center">
                     <div class="inline-block relative w-5/6 mb-6">
-                        <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-black">
-                          <option>Education</option>
-                          <option>Mechanical</option>
-                          <option>Shopping</option>
-                          <option>Taboo</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
             <div class="flow-root ml-3 pt-1">
                 <div class="my-2 block">
-                <button id="folder1"
-                    class="bg-indigo-500 w-2/3 inline-flex justify-between items-center hover:bg-indigo-700 text-xs text-white font-bold py-2 px-5 rounded">
-                    <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.59 8.59a1 1 0 1 1-1.42-1.42 4 4 0 1 1 5.66 5.66l-2.12 2.12a1 1 0 1 1-1.42-1.42l2.12-2.12A2 2 0 0 0 10.6 8.6zM12 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
-                    <span>No tags</span>
-                </button>
-            </div>
-            </div>
-            <div class="flow-root ml-3 pt-1">
-                <div class="my-2 block">
-                <button id="folder1"
-                    class="bg-orange-500 w-2/3 inline-flex justify-between items-center hover:bg-orange-700 text-xs text-white font-bold py-2 px-5 rounded">
-                    <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M8 14.54V6a1 1 0 0 1 .76-.97l12-3A1 1 0 0 1 22 3v12a4 4 0 1 1-2-3.46V4.28l-10 2.5V18a4 4 0 1 1-2-3.46zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-                    <span>Festivals</span>
-                </button>
-            </div>
+                    <button id="folder1"
+                        class="bg-indigo-500 w-2/3 inline-flex justify-between items-center hover:bg-indigo-700 text-xs text-white font-bold py-2 px-5 rounded">
+                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.59 8.59a1 1 0 1 1-1.42-1.42 4 4 0 1 1 5.66 5.66l-2.12 2.12a1 1 0 1 1-1.42-1.42l2.12-2.12A2 2 0 0 0 10.6 8.6zM12 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>
+                        <span>No tags</span>
+                    </button>
+                </div>
             </div>
             <div class="flow-root ml-3 pt-1">
                 <div class="my-2 block">
-                <button id="folder1"
-                    class="bg-green-500 w-2/3 inline-flex justify-between items-center hover:bg-green-700 text-xs text-white font-bold py-2 px-5 rounded">
-                    <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M6.1 21.98a1 1 0 0 1-1.45-1.06l1.03-6.03-4.38-4.26a1 1 0 0 1 .56-1.71l6.05-.88 2.7-5.48a1 1 0 0 1 1.8 0l2.7 5.48 6.06.88a1 1 0 0 1 .55 1.7l-4.38 4.27 1.04 6.03a1 1 0 0 1-1.46 1.06l-5.4-2.85-5.42 2.85zm4.95-4.87a1 1 0 0 1 .93 0l4.08 2.15-.78-4.55a1 1 0 0 1 .29-.88l3.3-3.22-4.56-.67a1 1 0 0 1-.76-.54l-2.04-4.14L9.47 9.4a1 1 0 0 1-.75.54l-4.57.67 3.3 3.22a1 1 0 0 1 .3.88l-.79 4.55 4.09-2.15z"/></svg>
-                    <span>Recipes</span>
-                </button>
+                    <button id="folder1"
+                        class="bg-orange-500 w-2/3 inline-flex justify-between items-center hover:bg-orange-700 text-xs text-white font-bold py-2 px-5 rounded">
+                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M8 14.54V6a1 1 0 0 1 .76-.97l12-3A1 1 0 0 1 22 3v12a4 4 0 1 1-2-3.46V4.28l-10 2.5V18a4 4 0 1 1-2-3.46zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                            </svg>
+                        <span>Festivals</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="flow-root ml-3 pt-1">
-            <div class="my-2 block">
-            <button id="folder1"
-                class="bg-yellow-500 w-2/3 inline-flex justify-between items-center hover:bg-yellow-700 text-xs text-white font-bold py-2 px-5 rounded">
-                <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16 8.38l4.55-2.27A1 1 0 0 1 22 7v10a1 1 0 0 1-1.45.9L16 15.61V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v1.38zm0 2.24v2.76l4 2V8.62l-4 2zM14 17V7H4v10h10z"/></svg>
-                <span>Video</span>
-            </button>
-        </div>
-    </div>
         </div>
         <div class="flex-1 bg-blue-100 text-purple-700">
-            Main content area
+            <nav
+                class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+
+                <form class="w-7/12 mt-2" action="/" method="post">
+                    <label
+                        class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
+                        for="addTab">
+                        Add Bookmark URL
+                    </label>
+                    <input
+                        class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="addTab" type="text" placeholder="www.bookmark-r.com">
         </div>
+        </form>
+
+        <div class="absolute top-0 right-0 p-4">
+            <img class="w-16 h-16 mr-2 inline-block rounded-full mr-5" src="./assets/img/default.jpg"
+                alt="portfolio icon">
+        </div>
+        </nav>
     </div>
-
-
-
-
-
-
+    </div>
 </body>
+
+</html>
