@@ -31,10 +31,6 @@ require("./routes/api-routes.js")(app);
 // Set Handlebars.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.get('/', function (req, res) {
-  res.render('home');
-}); // need to move to controller folder
-
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
