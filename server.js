@@ -28,6 +28,7 @@ app.use(passport.session());
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
+<<<<<<< Updated upstream
 // Set Handlebars.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -35,6 +36,11 @@ app.get('/', function (req, res) {
   res.render('home');
 }); // need to move to controller folder
 
+=======
+// // Set Handlebars.
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
+>>>>>>> Stashed changes
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
