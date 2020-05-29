@@ -1,10 +1,10 @@
 const path = require("path")
+const express = require("express");
+const router = express.Router();
 
-module.exports = function(app) {
-
-    app.get('/', function (req, res) {
-        res.render('home');
-      }); // need to move to controller folder
+router.get('/', function (req, res) {
+        res.render('index', {layout: 'main' })
+      }); 
 
 
     // Login page
@@ -13,5 +13,5 @@ module.exports = function(app) {
     // Members page (dashboard)
 
 
+module.exports = router;
 
-}

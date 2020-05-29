@@ -1,4 +1,8 @@
+const express = require("express");
+const router = express.Router();
 
+const db = require("../models");
+const passport = require("../config/passport");
 
 
 // module.exports = function (app) {
@@ -11,17 +15,12 @@
 
     //route for getting user data
 
-
-
     //routes 
 
     // Requiring our models and passport as we've configured it
 
 // }
 
-
-var db = require("../models");
-var passport = require("../config/passport");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.

@@ -1,7 +1,3 @@
---create tables--
-
-
-
 DROP DATABASE IF EXISTS bookmarkr_db;
 CREATE DATABASE bookmarkr_db;
 USE bookmarkr_db;
@@ -11,7 +7,7 @@ CREATE TABLE users
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255),
-    createdAt TIMESTAMP NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
 CREATE TABLE bookmarks
@@ -22,7 +18,7 @@ CREATE TABLE bookmarks
     CONSTRAINT FK_user_id FOREIGN KEY (user_id)
         REFERENCES users (id),
     click_count INT NULL,
-    createdAt TIMESTAMP NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
 
@@ -30,7 +26,7 @@ CREATE TABLE tags
 (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    createdAt TIMESTAMP NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
 -- 
@@ -42,6 +38,5 @@ CREATE TABLE bookmark_tag
         REFERENCES tags (id),
     CONSTRAINT FK_bookmark_id FOREIGN KEY (bookmark_id)
         REFERENCES bookmarks (id),
-    createdAt TIMESTAMP NOT NULL
-
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
