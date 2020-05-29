@@ -1,14 +1,16 @@
 // Requiring necessary npm packages
-var express = require("express");
-var session = require("express-session");
-var passport = require("./config/passport");
+const express = require("express");
+const session = require("express-session");
+const passport = require("./config/passport");
+const exphbs = require('express-handlebars');
+const chalk = require('chalk')
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
-var db = require("./models");
+const PORT = process.env.PORT || 8080;
+const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
-var app = express();
+const app = express();
 //required for post and put requests recognises both strings or arrays (middleware)
 app.use(express.urlencoded({ extended: true }));
 //required for post and put requests recognises JSON objects (middleware)
@@ -29,10 +31,14 @@ require("./routes/api-routes.js")(app);
 // Set Handlebars.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.get('/', function (req, res) {
+  res.render('home');
+}); // need to move to controller folder
+
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    console.log(chalk.bold.blue("🌎  Listening on port %s. "), chalk.bold.yellow(PORT) + chalk.bold.green("\nVisit ") + chalk.bold.blue("http://localhost:") + chalk.bold.yellow(PORT) + chalk.bold.green(" in your browser"));
   });
 });

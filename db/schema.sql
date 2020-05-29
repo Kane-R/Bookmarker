@@ -40,4 +40,5 @@ CREATE TABLE bookmark_tag
     CONSTRAINT FK_bookmark_id FOREIGN KEY (bookmark_id)
         REFERENCES bookmarks (id),
     createdAt TIMESTAMP NOT NULL
+
 );
