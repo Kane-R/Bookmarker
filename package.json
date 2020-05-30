@@ -30,14 +30,11 @@
     "sequelize": "^5.21.11",
     "postcss-cli": "^7.1.1",
     "sequelize": "^5.21.11",
-<<<<<<< Updated upstream
-    "postcss-cli": "^7.1.1",
-=======
+>>>>>>> Auto stash before merge of "Roz" and "origin/Roz"
 <<<<<<< refs/remotes/origin/connection
 =======
     "postcss-cli": "^7.1.1",
 >>>>>>> Auto stash before merge of "Roz" and "origin/Roz"
->>>>>>> Stashed changes
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
