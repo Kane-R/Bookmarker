@@ -30,7 +30,10 @@
     "sequelize": "^5.21.11",
     "postcss-cli": "^7.1.1",
     "sequelize": "^5.21.11",
+<<<<<<< Updated upstream
 >>>>>>> Auto stash before merge of "Roz" and "origin/Roz"
+=======
+>>>>>>> Stashed changes
 <<<<<<< refs/remotes/origin/connection
 =======
     "postcss-cli": "^7.1.1",
