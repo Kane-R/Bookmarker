@@ -1,4 +1,4 @@
-    <div class="min-h-full relative md:flex">
+    <div class="min-h-full md:flex antialiased">
         <div class="flex-none w-1/5 md:max-w-xs bg-purple-300 text-white border-solid border-r-2 border-gray-600">
 
             <div class="flow-root pt-1">
@@ -31,6 +31,9 @@
                     </button>
                 </div>
             </div>
+
+{{#each atag}}
+{{#if name}}
             <div class="flow-root ml-3 pt-1">
                 <div class="my-2 block">
                     <button id="folder1"
@@ -40,7 +43,7 @@
                             <path class="heroicon-ui"
                                 d="M8 14.54V6a1 1 0 0 1 .76-.97l12-3A1 1 0 0 1 22 3v12a4 4 0 1 1-2-3.46V4.28l-10 2.5V18a4 4 0 1 1-2-3.46zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                         </svg>
-                        <span>Festivals</span>
+                        <span>{{name}}</span>
                     </button>
                     <button>
                         {{!-- edit --}}
@@ -58,26 +61,61 @@
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="flex-1 bg-blue-100 text-purple-700">
-            <nav
-                class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+{{/if}}
+{{/each}}
 
-                <form class="w-7/12 mt-2" action="/" method="post">
-                    <label
-                        class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
-                        for="addTab">
+        </div>
+
+
+{{!-- Main Page --}}
+        <div class="flex-1 flex-row w-full grid grid-cols-3">
+            <nav class="w-full flex  items-center justify-between px-2 py-1 col-span-1">
+                <form class="w-7/12 mt-2" name="addBookmark" action="/bookmark" method="POST">
+                    <label class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700" for="addTab">
                         Add Bookmark URL
                     </label>
-                    <input
-                        class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="addTab" type="text" placeholder="www.bookmark-r.com">
-        </div>
-        </form>
-        <div class="absolute top-0 right-0 p-4">
+                    <input class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline" id="addBookmark" type="text" placeholder="www.bookmark-r.com">
+                 </form>
+        <div class="p-4">
             <img class="w-16 h-16 mr-2 inline-block rounded-full mr-5" src="./assets/img/default.jpg"
                 alt="portfolio icon">
-        </div>
-        </nav>
+                </div>
+            </nav> {{!-- end of nav --}}
+
+
+             <div class="col-span-2 px-10">
+              <div class="flex flex-wrap overflow-hidden xl:-mx-3 justify-between">
+
+{{#each bookm}}
+{{#if url}}
+
+  <div class="w-full overflow-hidden xl:my-3 xl:px-3 xl:w-1/5 m-3 rounded-lg overflow-hidden shadow-lg bg-blue-300">
+  <img class="w-full p-2 rounded-lg" src="assets/img/light-final-painting-featured-image.jpg" alt="Sunset in the mountains">
+  <div class="px-6 py-1">
+    <div class="font-bold text-xl text-center mb-1">
+      Water Painting
     </div>
-    </div>
+    <p class="text-gray-700 text-base text-center">
+     {{this.url}}
+    </p>
+  </div>
+  <div class="px-2 pb-3 pt-2 justify-between">
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#photography</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#travel</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#artwork Perth</span>
+  </div>
+</div>
+
+{{/if}}
+{{/each}}
+
+
+        </div>{{!-- end of grid --}}
+
+    
+           
+      
+
+    </div> {{!-- page container --}}
+ 
+    

@@ -12,6 +12,7 @@ module.exports = function (app) {
 
   //route to sign up user
 
+
   app.post("/api/signup", function(req,res) {
     db.user.create({
       
@@ -27,10 +28,13 @@ module.exports = function (app) {
 
   //route for getting user data
 
-
-
     //routes 
 
+
+    app.get("/api/bookmarks"), function (req,res) {
+      db.model.findAll();
+    }
+  
 
 }
 
