@@ -12,9 +12,18 @@ module.exports = function (app) {
 
   //route to sign up user
 
+  app.post("/api/signup", function(req,res) {
+    db.user.create({
+      
+    })
+
+  })
 
   //route for logging out
 
+  app.post("/api/login"), function(req,res) {
+    
+  }
 
   //route for getting user data
 
