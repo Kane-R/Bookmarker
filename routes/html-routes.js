@@ -1,15 +1,21 @@
 const path = require("path")
+const express = require("express");
+const router = express.Router();
 
-module.exports = function(app) {
+router.get('/', function (req, res) {
+        res.render('index', {layout: 'main' })
+      }); 
+
 
     // Main Page - includes sign up and login button
-    app.get('/', function(req, res) {
-        if (req.user) {
-            res.redirect("/members");
-          }
-          //set to members while developing - remember to change this
-          res.sendFile(path.join(__dirname, "../public/member.html"));
-    });
+   // app.get('/', function(req, res) {
+   //     if (req.user) {
+  //          res.redirect("/members");
+  //        }
+  //        //set to members while developing - remember to change this
+   //       res.sendFile(path.join(__dirname, "../public/member.html"));
+   // });
+
 
     // Login page
 
@@ -35,6 +41,6 @@ module.exports = function(app) {
     // 
 
 
+module.exports = router;
 
-}
 

@@ -1,7 +1,12 @@
+
 // Requiring our models and passport as we've configured it
+
+const express = require("express");
+const router = express.Router();
+
+
 const db = require("../models");
 const passport = require("../config/passport");
-
 
 module.exports = function (app) {
 
@@ -15,11 +20,12 @@ module.exports = function (app) {
 
 
 
-  //routes 
+    //routes 
 
-  
 
 }
+
+// }
 
 
 // module.exports = function(app) {
