@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Kane-R/Project2#readme",
   "dependencies": {
     "autoprefixer": "^9.8.0",
+    "body-parser": "^1.19.0",
     "chalk": "^4.0.0",
     "config.json": "0.0.4",
     "express": "^4.17.1",
