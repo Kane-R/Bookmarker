@@ -35,7 +35,10 @@
     "passport-google-oauth20": "^2.0.0",
     "postcss-cli": "^7.1.1",
     "sequelize": "^5.21.11",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "typeface": "0.0.0",
+    "typeface-open-sans": "0.0.75",
+    "typeface-permanent-marker": "0.0.72"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
