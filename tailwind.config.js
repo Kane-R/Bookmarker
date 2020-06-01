@@ -2,7 +2,7 @@ module.exports = {
   purge: [],
   theme: {
     fontFamily: {
-      'Permanent Marker': ["'Permanent Marker'", "cursive"],
+      'Permanent Marker': ['"Permanent Marker"', 'cursive'],
     },
     extend: {},
   },

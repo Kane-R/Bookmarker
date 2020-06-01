@@ -1,31 +1,38 @@
     <div class="min-h-full md:flex font-body">
         {{!-- side bar start here --}}
         <nav class="flex-none w-1/5 shadow-xl bg-pink-600 items-center justify-between py-4 px-6">
-            <h1
-                class="text-left w-full text-white inline-block whitespace-no-wrap uppercase font-bold p-0 px-0 fontPM">
+           <div class="w-full flex items-center justify-between w-full whitespace-no-wrap h-12">
+            <img src="./assets/img/icon.png" alt="icon" class="w-12 h-12 shadow-lg m-2">
+            <h1 class="text-left text-white uppercase font-bold p-0 px-0 fontPM text-2xl mr-3">
                 BookMark-R</h1>
+            </div>
             <ul class="list-none">
-                   <hr class="my-4"/> {{!-- line --}}
-                   <h6
-              class="md:min-w-full text-gray-700 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Available Tags
-            </h6>
+                <hr class="my-4"> {{!-- line --}}
+                <h6 class="md:min-w-full text-gray-700 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                    Available Tags
+                </h6>
                 <li class="inline-block w-full m-2" id="noTagBtn">
                     <button
                         class="text-white block py-1 px-3 bg-indigo-500 w-2/3 inline-flex justify-between hover:bg-green-500 hover:text-black text-xs text-white font-bold py-2 px-5 rounded "
                         href="#">
-                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>
                         <span>No tags</span>
                     </button>
                 </li>
                 {{#each atag}}
                 {{#if name}}
                 <li class="inline-block relative w-full m-2" id="{{name}}tagBtn">
-                    <button
-                        class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex justify-between hover:bg-yellow-400 hover:text-black
-                         text-xs text-white font-bold py-2 px-5 rounded"
-                        href="#">
-                     <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <button class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex justify-between hover:bg-yellow-400 hover:text-black
+                         text-xs text-white font-bold py-2 px-5 rounded" href="#">
+                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>
                         <span>{{name}}</span>
                     </button>
                     <button id="{{name}}Edit">
@@ -37,7 +44,7 @@
                     </button>
                     {{!-- bin --}}
                     <button id="{{name}}Delete">
-                        <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path class="heroicon-ui"
                                 d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z" />
                         </svg>
@@ -59,7 +66,7 @@
                         Add Bookmark URL
                     </label>
                     <input
-                        class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
+                        class="w-7/12 box-border h-15 shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
                         id="addbookmark" type="text" placeholder="www.bookmark-r.com">
                 </form>
                 <ul class="relative flex-col p-2 mr-6 md:flex-row list-none items-center hidden md:flex">
@@ -74,8 +81,8 @@
                     <div class="hidden absolute z-50 right-0 top-0 mt-16 mr-2 bg-yellow-500 font-mono font-bold text-base float-left py-4 list-none text-left rounded shadow-lg mt-1"
                         style="min-width: 12rem;" id="user-dropdown">
                         <a href="#LogOut"
-                            class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800" id="logOut">Log
-                            Out</a>
+                            class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+                            id="logOut">Log Out</a>
                     </div>
                 </ul>
             </nav>
@@ -83,34 +90,45 @@
             {{!-- Cards --}}
             <div class="col-span-2 px-10 relative flex flex-wrap">
 
-                    {{#each bookm}}
-                    {{#if url}}
-
-                    <div
-                        class="w-full overflow-hidden mx-5 xl:my-3 xl:px-3 xl:w-1/5 rounded-lg overflow-hidden shadow-lg bg-blue-300">
-                        <img class="w-full p-2 rounded-lg" src="assets/img/light-final-painting-featured-image.jpg"
-                            alt="Sunset in the mountains">
-                        <div class="px-6 py-1">
-                            <div class="font-bold text-xl text-center mb-1">
-                                Water Painting
-                            </div>
-                            <a class="text-blue-600 text-base text-center font-mono" href="{{this.url}}">{{this.url}}</a>
+                {{#each bookm}}
+                {{#if url}}
+                <div
+                    class="relative mx-5 my-3 px-3 w-64 rounded-lg bg-blue-300 shadow-2xl">
+                    <img class="w-56 rounded-lg flex m-auto mt-3"
+                        src="assets/img/light-final-painting-featured-image.jpg" alt="Sunset in the mountains">
+                    <div class="px-6 py-1">
+                        <div class="font-bold text-xl text-center mb-1">
+                            Water Painting
                         </div>
-                        <div class="px-2 pb-3 pt-2 justify-between">
-                            <span
-                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#photography</span>
-                            <span
-                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#travel</span>
-                            <span
-                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#artwork
-                                Perth</span>
-                        </div>
+                        <a class="text-blue-600 text-base text-center font-mono" href="{{this.url}}">{{this.url}}</a>
                     </div>
-
+                    <div class="px-2 pb-3 pt-2 justify-between">
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#photography</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#travel</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#artwork
+                            Perth</span>
+                        <button class="mr-3 mb-2 menuBtn absolute bottom-0 right-0" value="{{@index}}">
+                            <svg class="fill-current text-yellow-600" xxmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.56 8.93l6.37-2.12a1 1 0 0 1 1.26 1.26l-2.12 6.37a1 1 0 0 1-.63.63l-6.37 2.12a1 1 0 0 1-1.26-1.26l2.12-6.37a1 1 0 0 1 .63-.63zm-.22 5.73l4-1.33 1.32-4-4 1.34-1.32 4z"/></svg></button>
+                        {{!-- drop down box --}}
+                         <nav class="hidden absolute z-50 right-0 -bottom-0 w-12 mr-3 mt-4 bg-yellow-500 font-mono font-bold text-base float-left list-none text-left rounded-lg  shadow-lg mt-1 menu-dropdown shadow-2xl" style="min-width: 12rem;" id="{{@index}}dropDown">
+                            <form name="dropDown{{@index}}">
+                                <label class="w-full justify-center text-xs font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700" for="addTag{{@index}}">Create or Remove Tags</label>
+                            <input class="w-full box-border shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
+                        id="tag{{@index}}" type="text" placeholder="News">
+                        </form>
+                        <form name="dropDown{{@index}}">
+                                <label class="w-full justify-start text-xs font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700" for="addTag{{@index}}">Assigned Tags</label>
+                                </form>
+                        </nav>
+                    </div>
+                </div>
                     {{/if}}
                     {{/each}}
 
                 </div>{{!-- end of grid --}}
-        </div> {{!-- page container --}}
+            </div> {{!-- page container --}}
 
-        <script src="js/member.js"></script>
+            <script src="js/member.js"></script>
