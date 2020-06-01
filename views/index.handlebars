@@ -25,9 +25,8 @@
                 </li>
                 {{#each atag}}
                 {{#if name}}
-                <li class="inline-block w-full m-2" id="{{name}}tagBtn">
-                    <button class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex justify-between hover:bg-yellow-400 hover:text-black
-                         text-xs text-white font-bold py-2 px-5 rounded" href="#">
+                <li class="inline-block w-full m-2 relative" id="{{name}}tagBtn">
+                    <button class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex align-middle justify-between hover:bg-yellow-400 hover:text-black text-xs text-white font-bold py-2 px-5 rounded" href="#">
                         <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             width="24" height="24">
                             <path class="heroicon-ui"
@@ -36,19 +35,19 @@
                         <span>{{name}}</span>
                     </button>
                     {{!-- bin --}}
-                    <button class="relative ml-2 fill-current hover:text-red-200 binBtn" data-open="{{@index}}Bin">
+                    <button class="ml-2 fill-current hover:text-red-200 binBtn" data-open="{{@index}}Bin">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path class="heroicon-ui"
                                 d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z" />
                         </svg>
-                        <div class="hidden absolute right-0 top-0 z-50 bg-gray-200 text-xs rounded shadow-lg" id="{{@index}}Bin">
-                            <p>Delete Tag?</p>
-                            <p>Yes?</p>
-                            <p>No?</p>
-
+                        </button>
+                        <div class="hidden z-50 w-32 h-16 ml-64 items-center text-center justify-center bg-black text-xs font-extrabold text-white rounded-lg shadow-lg p-2" style="position:absolute; top:-2em; right:-8em" id="{{@index}}Bin">
+                            <p class="w-full mb-2">Delete Tag?</p>
+                            <button class="bg-green-600 w-12 h-7 font-bold rounded-lg text-center">Yes</button>
+                            <button class="bg-red-600 w-12 h-7 font-bold rounded-lg text-center">No</button>
                         </div>
-                    </button>
                 </li>
+              
                 {{/if}}
                 {{/each}}
             </ul>
@@ -58,32 +57,32 @@
         <div class="flex-1 flex-row w-full grid grid-cols-2">
 
             <nav class="w-full flex block items-center justify-between px-2 py-1 col-span-1 mb-6">
-                <form class=" w-5/6 mt-2" name="addBookmark" id="addBookmark" action="/bookmark" method="POST">
+                <form class="w-5/6 mt-2" name="addBookmark" id="addBookmark" action="/bookmark" method="POST">
                     <label
                         class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
                         for="addTab">
                         Add Bookmark URL
                     </label>
                     <input
-                        class="w-7/12 box-border h-15 shadow appearance-none border rounded-lg py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
-                        id="bookmarkInput" type="text" placeholder="http://...">
-                        <button class="inline-flex h-15 w-24 mx-2 mb-1 inline-block border text-white font-bold py-1 px-3 align-middle justify-between rounded-lg bg-red-500 hover:bg-green-600 focus:outline-none">
+                        class="w-7/12 box-borde h-10 shadow appearance-none border rounded-lg py-1 px-6 text-gray-700 text-left leading-tight focus:outline-none focus:shadow-outline"
+                        id="bookmarkInput" type="text" placeholder="http://www.BookMark-R.com">
+                        <button class="inline-flex h-10 w-24 mx-2 my-3 inline-block border text-white font-bold py-2 px-3 align-middle justify-between rounded-lg bg-red-500 hover:bg-green-600 focus:outline-none">
                             <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/></svg><spam>Add</spam></button>
                 </form>
-                <ul class="relative flex-col p-2 mr-6 md:flex-row list-none items-center hidden md:flex">
-                    <a class="text-gray-600 block" id="potrait" href="">
+                <ul class="relative block p-2 list-none items-center hidden md:flex">
+                    <a class="block" id="potrait" href="">
                         <div class="items-center flex">
-                            <span
-                                class="absolute top-0 right-0 w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full shadow-lg"><img
-                                    src="./assets/img/default.jpg" alt="portfolio icon"
+                            <span class="absolute top-0 right-0 w-12 h-12 mb-5 text-sm text-white inline-flex items-center mr-6">
+                                <img class="mr-6 mb-5 rounded-full" src="./assets/img/default.jpg" alt="portfolio icon"
                                     class="w-full rounded-full align-middle border-none shadow-lg" /></span>
                         </div>
                     </a>
-                    <div class="hidden absolute z-50 right-0 top-0 mt-16 mr-2 bg-yellow-500 font-mono font-bold text-base float-left py-4 list-none text-left rounded shadow-lg mt-1"
+                    <div class="hidden absolute z-50 right-0 top-0 mt-12 mr-10 bg-yellow-500 font-mono font-bold text-base float-left py-4 list-none text-left rounded shadow-lg hover:bg-black"
                         style="min-width: 12rem;" id="user-dropdown">
                         <a href="#LogOut"
-                            class="text-lg font-normal inline-block inline-flex align-middle w-full whitespace-no-wrap bg-transparent text-gray-800"
-                            id="logOut"><svg class="mx-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"/></svg>Log Out</a>
+                            class="text-lg font-normal inline-block inline-flex align-middle w-full whitespace-no-wrap bg-transparent text-gray-800 hover:text-blue-500"
+                            id="logOut">
+                            <svg class="mx-4 fill-current hover:text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"/></svg>Log Out</a>
                     </div>
                 </ul>
             </nav>
