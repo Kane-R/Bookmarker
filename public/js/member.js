@@ -1,17 +1,33 @@
-// ############ ADD BOOKMARK - KR ###################
+$(document).ready(function () {
 
-// $("input").on("keydown",function search(e) {
-//     if(e.keyCode == 13) {
-//         // console.log("add bookmark text sent");
-//         alert($(this).val());
-//     }
-// });
+    $("#potrait").click(function (event) {
+        event.preventDefault();
+        $("#user-dropdown").toggleClass("hidden")
+    })
 
-// ############ end ADD BOOKMARK - KR ###################
+    $(document).on('click', '.menuBtn', function (event){
+      event.preventDefault();
+      let btnValue = $(this).val()
+      $("#" + btnValue + "dropDown").toggleClass("hidden")
+    })
+
+    $("#addbookmark").on('keypress', function(event) {
+        if (event.which == '13'){
+            console.log($(this).val().trim())
+        
+    }
+});
+
+
+});
 
 // $(document).ready(function() {
 
+<<<<<<<
 //     $(".addBookmark").on("keypress", function (event) {
+=======
+
+>>>>>>>
 
 //         event.preventDefault()
 

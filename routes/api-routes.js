@@ -1,16 +1,12 @@
 // Requiring our models and passport as we've configured it
 
 const express = require("express");
-const router = express.Router();
-
-
 const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function (app) {
 
   //route to sign up user
-
   app.post("/api/signup", function(req,res) {
     db.user.create({
       
@@ -19,38 +15,17 @@ module.exports = function (app) {
   });
 
   //route for logging out
-
   app.post("/api/login"), function(req,res) {
     
   };
 
   //route for getting user data
 
-
-  // ##### route for adding bookmark - KR  #######
-  router.post("/addBookmark"), function(req, res) {
-
-  };
-
- 
-//   router.post("/newBurger", function (req, res) {
-
-//     burgers.create(req.body.title, function (result){
-//     let burgerID = result.insertId;
-//     let ingredientList = []
-//     ingredientList = req.body.Topping;
-//     ingredientList.push(req.body.Sauce);
-//     ingredientList.push(req.body.Patty);
-//     ingredients.create(ingredientList, burgerID, function (result2) {
-//       // console.log(result1.insertId);
-//         res.json({ id: result2 });
-//      })
-//    })
-//  });
-
-
-  //routes 
-
+    //routes 
+    app.get("/api/bookmarks"), function (req,res) {
+      db.model.findAll();
+    }
+  
 
 }
 
