@@ -12,12 +12,21 @@ module.exports = function (app) {
       
     })
 
-  });
+  app.post("/api/signup", function(req,res) {
+    db.user.create({
+      
+    })
+
+  })
 
   //route for logging out
   app.post("/api/login"), function(req,res) {
     
   };
+
+  app.post("/api/login"), function(req,res) {
+    
+  }
 
   //route for getting user data
 
