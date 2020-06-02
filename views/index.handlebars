@@ -1,8 +1,9 @@
+   <link rel="stylesheet" href="./css/member.css">
     <div class="min-h-full md:flex font-body">
         {{!-- side bar start here --}}
         <nav class="flex-none w-1/5 shadow-xl bg-pink-600 items-center justify-between py-4 px-6">
            <div class="w-full flex items-center justify-between w-full whitespace-no-wrap h-12">
-            <img src="./assets/img/icon.png" alt="icon" class="w-12 h-12 shadow-lg m-2">
+            <img src="./assets/img/icon.png" alt="icon" class="w-12 h-12 shadow-lg m-2 rounded-full">
             <h1 class="text-left text-white uppercase font-bold p-0 px-0 fontPM text-2xl mr-3">
                 BookMark-R</h1>
             </div>
@@ -11,9 +12,9 @@
                 <h6 class="md:min-w-full text-gray-700 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                     Available Tags
                 </h6>
-                <li class="inline-block w-full m-2" id="noTagBtn">
-                    <button
-                        class="text-white block py-1 px-3 bg-indigo-500 w-2/3 inline-flex justify-between hover:bg-green-500 hover:text-black text-xs text-white font-bold py-2 px-5 rounded "
+                <li class="inline-block w-full m-2">
+                    <button id="noTagBtn"
+                        class="text-white block py-1 px-3 bg-indigo-500 w-2/3 inline-flex justify-between hover:bg-green-500 hover:text-black text-xs text-white font-bold py-2 px-5 rounded"
                         href="#">
                         <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             width="24" height="24">
@@ -25,9 +26,8 @@
                 </li>
                 {{#each atag}}
                 {{#if name}}
-                <li class="inline-block relative w-full m-2" id="{{name}}tagBtn">
-                    <button class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex justify-between hover:bg-yellow-400 hover:text-black
-                         text-xs text-white font-bold py-2 px-5 rounded" href="#">
+                <li class="inline-block w-full m-2 relative" id="{{name}}tagBtn">
+                    <button class="text-white block py-1 px-3 bg-orange-500 w-2/3 inline-flex align-middle justify-between hover:bg-yellow-400 hover:text-black text-xs text-white font-bold py-2 px-5 rounded generatedTag" value="{{name}}">
                         <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             width="24" height="24">
                             <path class="heroicon-ui"
@@ -35,21 +35,20 @@
                             </svg>
                         <span>{{name}}</span>
                     </button>
-                    <button id="{{name}}Edit">
-                        {{!-- edit --}}
-                        <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path class="heroicon-ui"
-                                d="M6.3 12.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM8 16h2.59l9-9L17 4.41l-9 9V16zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h6a1 1 0 0 1 0 2H4v14h14v-6z" />
-                        </svg>
-                    </button>
                     {{!-- bin --}}
-                    <button id="{{name}}Delete">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <button class="ml-2 fill-current hover:text-red-200 binBtn" data-open="{{@index}}Bin">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path class="heroicon-ui"
                                 d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z" />
                         </svg>
-                    </button>
+                        </button>
+                        <div class="hidden z-50 w-32 h-16 ml-64 items-center text-center justify-center bg-black text-xs font-extrabold text-white rounded-lg shadow-lg p-2" style="position:absolute; top:-2em; right:-8em" id="{{@index}}Bin">
+                            <p class="w-full mb-2">Delete Tag?</p>
+                            <button class="bg-green-600 w-12 h-7 font-bold rounded-lg text-center delYesBtn">Yes</button>
+                            <button class="bg-red-600 w-12 h-7 font-bold rounded-lg text-center delNoBtn" data-close="{{@index}}Bin">No</button>
+                        </div>
                 </li>
+              
                 {{/if}}
                 {{/each}}
             </ul>
@@ -58,69 +57,103 @@
         {{!-- Main Page --}}
         <div class="flex-1 flex-row w-full grid grid-cols-2">
 
-            <nav class="w-full flex items-center justify-between px-2 py-1 col-span-1 mb-6">
-                <form class="w-7/12 mt-2" name="addBookmark" action="/bookmark" method="POST">
+            <nav class="w-full flex block items-center justify-between px-2 py-1 col-span-1 mb-6">
+                <form class="w-5/6 mt-2" name="addBookmark" id="addBookmark" action="/bookmark" method="POST">
                     <label
                         class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
                         for="addTab">
                         Add Bookmark URL
                     </label>
                     <input
-                        class="w-7/12 box-border h-15 shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
-                        id="addbookmark" type="text" placeholder="www.bookmark-r.com">
+                        class="w-7/12 box-borde h-10 shadow appearance-none border rounded-lg py-1 px-6 text-gray-700 text-left leading-tight focus:outline-none focus:shadow-outline"
+                        id="bookmarkInput" type="text" placeholder="http://www.BookMark-R.com">
+                        <button class="inline-flex h-10 w-24 mx-2 my-3 inline-block border text-white font-bold py-2 px-3 align-middle justify-between rounded-lg bg-red-500 hover:bg-green-600 focus:outline-none">
+                            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/></svg><spam>Add</spam></button>
                 </form>
-                <ul class="relative flex-col p-2 mr-6 md:flex-row list-none items-center hidden md:flex">
-                    <a class="text-gray-600 block" id="potrait" href="">
+                <ul class="relative block p-2 list-none items-center hidden md:flex">
+                    <a class="block" id="potrait" href="">
                         <div class="items-center flex">
-                            <span
-                                class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full shadow-lg"><img
-                                    src="./assets/img/default.jpg" alt="portfolio icon"
+                            <span class="absolute top-0 right-0 w-12 h-12 mb-5 text-sm text-white inline-flex items-center mr-6">
+                                <img class="mr-6 mb-5 rounded-full" src="./assets/img/default.jpg" alt="portfolio icon"
                                     class="w-full rounded-full align-middle border-none shadow-lg" /></span>
                         </div>
                     </a>
-                    <div class="hidden absolute z-50 right-0 top-0 mt-16 mr-2 bg-yellow-500 font-mono font-bold text-base float-left py-4 list-none text-left rounded shadow-lg mt-1"
+                    <div class="hidden absolute z-50 right-0 top-0 mt-12 mr-10 bg-yellow-500 font-mono font-bold text-base float-left py-4 list-none text-left rounded shadow-lg hover:bg-black"
                         style="min-width: 12rem;" id="user-dropdown">
                         <a href="#LogOut"
-                            class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
-                            id="logOut">Log Out</a>
+                            class="text-lg font-normal inline-block inline-flex align-middle w-full whitespace-no-wrap bg-transparent text-gray-800 hover:text-blue-500"
+                            id="logOut">
+                            <svg class="mx-4 fill-current hover:text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"/></svg>Log Out</a>
                     </div>
                 </ul>
             </nav>
 
             {{!-- Cards --}}
-            <div class="col-span-2 px-10 relative flex flex-wrap">
+            <div class="col-span-2 px-10 flex flex-wrap">
 
                 {{#each bookm}}
                 {{#if url}}
-                <div
-                    class="relative mx-5 my-3 px-3 w-64 rounded-lg bg-blue-300 shadow-2xl">
+                <div class="relative mx-5 my-3 px-3 w-64 rounded-lg shadow-2xl bg-blue-200">
                     <img class="w-56 rounded-lg flex m-auto mt-3"
-                        src="assets/img/light-final-painting-featured-image.jpg" alt="Sunset in the mountains">
+                    src="/assets/img/light-final-painting-featured-image.jpg"
+                        alt="Sunset in the mountains" href="{{this.url}}"></button>
                     <div class="px-6 py-1">
                         <div class="font-bold text-xl text-center mb-1">
                             Water Painting
                         </div>
-                        <a class="text-blue-600 text-base text-center font-mono" href="{{this.url}}">{{this.url}}</a>
+                        <a class="w-full inline-block text-blue-600 text-base text-center font-mono" href="{{this.url}}">{{this.url}}</a>
                     </div>
                     <div class="px-2 pb-3 pt-2 justify-between">
                         <span
-                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#photography</span>
+                            class="items-center inline-block inline-flex align-middle justify-between bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">
+                            <svg class="w-3 h-3 mx-1 object-center stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>photograph</span>
                         <span
-                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#travel</span>
+                           class="items-center inline-block inline-flex align-middle justify-between bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">
+                            <svg class="w-3 h-3 mx-1 object-center stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>travel</span>
                         <span
-                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">#artwork
-                            Perth</span>
-                        <button class="mr-3 mb-2 menuBtn absolute bottom-0 right-0" value="{{@index}}">
+                            class="items-center inline-block inline-flex align-middle justify-between bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1">
+                            <svg class="w-3 h-3 mx-1 object-center stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>artwork Perth</span>
+                        <button class="mr-3 mb-2 menuBtn absolute bottom-0 right-0" value="{{@index}}" data-open="{{@index}}dropDown">
                             <svg class="fill-current text-yellow-600" xxmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.56 8.93l6.37-2.12a1 1 0 0 1 1.26 1.26l-2.12 6.37a1 1 0 0 1-.63.63l-6.37 2.12a1 1 0 0 1-1.26-1.26l2.12-6.37a1 1 0 0 1 .63-.63zm-.22 5.73l4-1.33 1.32-4-4 1.34-1.32 4z"/></svg></button>
                         {{!-- drop down box --}}
-                         <nav class="hidden absolute z-50 right-0 -bottom-0 w-12 mr-3 mt-4 bg-yellow-500 font-mono font-bold text-base float-left list-none text-left rounded-lg  shadow-lg mt-1 menu-dropdown shadow-2xl" style="min-width: 12rem;" id="{{@index}}dropDown">
-                            <form name="dropDown{{@index}}">
-                                <label class="w-full justify-center text-xs font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700" for="addTag{{@index}}">Create or Remove Tags</label>
-                            <input class="w-full box-border shadow appearance-none border rounded py-1 px-3 text-gray-700 text-center leading-tight focus:outline-none focus:shadow-outline"
+                         <nav class="hidden flex-col text-center absolute z-50 right-0 -bottom-0 w-12 mr-3 mt-4 bg-yellow-500 font-mono font-bold text-base list-none rounded-lg shadow-lg mt-1 menu-dropdown shadow-2xl" style="min-width: 12rem;" id="{{@index}}dropDown">
+                            <form name="dropDown{{@index}}" class="createTagForm">
+                                <label class="w-full text-xs font-mono tracking-tight text-gray-700 text-center my-3" for="addTag{{@index}}">Create & Remove tags</label>
+                            <input class="w-10/12 flex mx-auto box-border shadow appearance-none py-1 px-1 m-3 border rounded text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline createTag"
                         id="tag{{@index}}" type="text" placeholder="News">
                         </form>
                         <form name="dropDown{{@index}}">
-                                <label class="w-full justify-start text-xs font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700" for="addTag{{@index}}">Assigned Tags</label>
+                                <label class="w-full text-xs font-mono tracking-tight text-center text-gray-700" for="addTag{{@index}}">Assigned Tags</label>
+
+                             <ul class="list-none">
+                <li class="relative w-10/12 inline-block flex float-left m-2 ml-3 mx-auto rounded-lg" id="{{name}}tagBtn">
+                    <p class="items-center inline-block inline-flex align-middle justify-between text-white bg-green-500 w-full text-xs text-white font-bold py-2 px-2 rounded" >
+                        <svg class="w-4 h-4 stroke-current stroke-2 text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path class="heroicon-ui"
+                                d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>
+                        <span class="mx-2">{{name}} Photography</span>
+                    
+                    {{!-- X symbol --}}
+                        <button id="{{name}}Delete" class="fill-current text-center hover:text-red-700 removeBtn">
+                        <svg  class="w-6 h-6 stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="heroicon-ui" d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"/></svg>
+                        </svg>
+                    </button>
+                    </p>
+                </li>
+            </ul>
                                 </form>
                         </nav>
                     </div>
