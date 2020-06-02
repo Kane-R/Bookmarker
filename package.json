@@ -46,11 +46,7 @@
   },
   "devDependencies": {
     "babel-register": "^6.26.0",
-<<<<<<< refs/remotes/origin/master
     "nodemon": "^2.0.4",
-=======
-    "babel-register": "^6.26.0",
->>>>>>> oauth complete
     "sequelize-cli": "^5.5.1"
   }
 }

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Chell2014$",
+    "password": "root",
     "database": "bookmarkr_db",
     "port": 3306,
     "host": "127.0.0.1",
@@ -10,7 +10,7 @@
   },
   "test": {
     "username": "root",
-    "password": "Chell2014$",
+    "password": "root",
     "database": "bookmarkr_db",
     "port": 3306,
     "host": "127.0.0.1",
@@ -19,7 +19,7 @@
   },
   "production": {
     "username": "root",
-    "password": "Chell2014$",
+    "password": "root",
     "database": "bookmarkr_db",
     "port": 3306,
     "host": "127.0.0.1",

@@ -4,12 +4,21 @@ const router = express.Router();
 const db = require("../models");
 const chalk = require('chalk')
 
-// router.get('/', function (req, res) {
-//         res.render('index', {layout: 'main' })
-//       }); 
 
-//Main Page - includes sign up and login button
+
+//Login page
+// create home route
 router.get('/', function (req, res) {
+    if (req.user) {
+        res.redirect("/members");
+    }
+    //set to members while developing - remember to change this
+    res.render('home');
+});
+
+
+// Members page (dashboard)
+router.get('/members', function (req, res) {
     if (req.user) {
         res.redirect("/members");
     }
@@ -18,9 +27,6 @@ router.get('/', function (req, res) {
     }).then((bookmark) => {
         let bookm = JSON.parse(JSON.stringify(bookmark));
         console.log(chalk.green(bookm) + "\n")
-// router.get('/', function (req, res) {
-//         res.render('index', {layout: 'main' })
-//       }); 
 
             db.Tag.findAll({
                 attributes: ['name']
@@ -40,17 +46,6 @@ router.get('/', function (req, res) {
 
                     console.log(completeArray)
 
-    router.get('/', function(req, res){
-       res.render('login', {layout: 'main'}) 
-    });
-
-    router.get('/login', function(req, res) {
-        if (req.user) {
-            res.redirect("/members");
-          }
-          //set to members while developing - remember to change this
-          res.sendFile(path.join(__dirname, "../public/login.html"));
-    });
                     res.render('index', completeArray);
                 })
         })
@@ -58,30 +53,6 @@ router.get('/', function (req, res) {
 });
 
 
-//Login page
-router.get('/login', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    //set to members while developing - remember to change this
-    res.sendFile(path.join(__dirname, "../public/mock/login.html"));
-});
 
-    router.get('/dashboard', function(req, res) {
-        if (req.user) {
-            res.redirect("/members");
-          }
-          //set to members while developing - remember to change this
-          res.sendFile(path.join(__dirname, "../public/member.html"));
-    });
-// Members page (dashboard)
-
-router.get('/dashboard', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    //set to members while developing - remember to change this
-    res.sendFile(path.join(__dirname, "../public/mock/member.html"));
-});
 
 module.exports = router;
