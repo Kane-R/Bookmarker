@@ -2,9 +2,9 @@ const path = require("path")
 const express = require("express");
 const router = express.Router();
 
-router.get('/', function (req, res) {
-        res.render('index', {layout: 'main' })
-      }); 
+// router.get('/', function (req, res) {
+//         res.render('index', {layout: 'main' })
+//       }); 
 
 
     // Main Page - includes sign up and login button
@@ -19,7 +19,11 @@ router.get('/', function (req, res) {
 
     // Login page
 
-    app.get('/login', function(req, res) {
+    router.get('/', function(req, res){
+       res.render('login', {layout: 'main'}) 
+    });
+
+    router.get('/login', function(req, res) {
         if (req.user) {
             res.redirect("/members");
           }
@@ -30,7 +34,7 @@ router.get('/', function (req, res) {
 
     // Members page (dashboard)
 
-    app.get('/dashboard', function(req, res) {
+    router.get('/dashboard', function(req, res) {
         if (req.user) {
             res.redirect("/members");
           }
