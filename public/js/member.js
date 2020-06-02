@@ -161,8 +161,27 @@ $(document).ready(function () {
       //     location.reload(true);
       //   }
       // )
-
   })
+
+    //All Bookmark Tag
+    $("#allBookmarks").on("click", function (event) {
+      event.preventDefault();
+      console.log("You have click tag: all bookmarks Btn")
+      //Do something
+  
+      //const allBM = select all URLS
+      //const allBooks = {
+      //   where: *?,
+      // }
+          // $.ajax("/tags", {
+        //   type: 'GET',
+        //   data: allBooks,
+        // }).then(
+        //   function(){
+        //     location.reload(true);
+        //   }
+        // )
+    })
 
   //Generated Tag Btn
   $(".generatedTag").on('click', function (event) {
@@ -200,5 +219,7 @@ $(document).ready(function () {
   //     }
   // });
   })
+
+
 
 });
