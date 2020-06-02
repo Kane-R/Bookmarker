@@ -18,6 +18,9 @@ router.get('/', function (req, res) {
     }).then((bookmark) => {
         let bookm = JSON.parse(JSON.stringify(bookmark));
         console.log(chalk.green(bookm) + "\n")
+// router.get('/', function (req, res) {
+//         res.render('index', {layout: 'main' })
+//       }); 
 
             db.Tag.findAll({
                 attributes: ['name']

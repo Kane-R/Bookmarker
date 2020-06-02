@@ -45,6 +45,7 @@
     "typeface-permanent-marker": "0.0.72"
   },
   "devDependencies": {
+    "babel-register": "^6.26.0",
 <<<<<<< refs/remotes/origin/master
     "nodemon": "^2.0.4",
 =======
