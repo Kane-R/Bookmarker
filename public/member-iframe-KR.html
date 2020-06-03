@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BookMark-R</title>
+    <link
+      href="https://unpkg.com/tailwindcss@1.1.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="h-full">
+    <div class="h-24">
+      <div class="flex-1 bg-blue-100 text-purple-700">
+        <nav
+          class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+        >
+          <form class="w-7/12 mt-2" action="/" method="post">
+            <label
+              class="w-3/12 justify-end text-xl font-bold font-mono tracking-tight md:mb-0 pr-5 pl-12 text-gray-700"
+              for="addTab"
+              >Add Bookmark URL</label
+            >
+
+            <input
+              class="w-7/12 box-border h-15 flot-left shadow appearance-none border rounded py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="addTab"
+              type="text"
+              placeholder="www.bookmark-r.com"
+            />
+          </form>
+
+          <div class="absolute top-0 right-0 p-4">
+            <img
+              class="w-16 h-16 mr-2 inline-block rounded-full mr-5"
+              src="./assets/img/default.jpg"
+              alt="portfolio icon"
+            />
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="min-h-full relative md:flex">
+      <div class="flex-1 bg-blue-100 text-purple-700">
+        <iframe
+          class="h-full w-full"
+          id="inlineFrameExample"
+          title="Inline Frame Example"
+          width="300"
+          height="1000"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
+        >
+        </iframe>
+      </div>
+    </div>
+  </body>
+</html>
