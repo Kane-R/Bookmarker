@@ -1,10 +1,7 @@
-const path = require("path")
-const express = require("express");
-// const router = express.Router();
 const db = require("../models");
 const chalk = require('chalk')
 
-module.exports = function(app) {
+module.exports = function(app){
 
 //Login page
 // create home route
@@ -39,13 +36,10 @@ app.get('/members', function (req, res) {
                 }).then((user) => {
                     let user1 = JSON.parse(JSON.stringify(user));
                     console.log(chalk.blue(user) + "\n")
-
                     const completeArray = { 
                         bookm, atag, user1
                     }
-
                     console.log(completeArray)
-
                     res.render('index', completeArray);
                 })
         })
@@ -55,4 +49,5 @@ app.get('/members', function (req, res) {
 
 }
 
-// module.exports = router;
+}
+
