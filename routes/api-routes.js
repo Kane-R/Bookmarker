@@ -69,9 +69,7 @@ module.exports = function(app) {
 
   //get all tags for user
 
-  app.get("/tags", function(req, res) {
-    
-  })
+  app.get("/tags", function(req,res) {})
 
 
 
