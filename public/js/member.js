@@ -1,112 +1,237 @@
-// PREVENT DOUBLE/MULTIPLE UNINTENDED FORM SUBMISSIONS
-// use debounce function to prevent double click / multiple submits
-// &/OR disable button upon click/enter
-
-// validate (<input type="url" -- line 70 index.handlebars)
-// prepare for AJAX
+//import { cloneDeep } from "sequelize/types/lib/utils";
 
 $(document).ready(function () {
 
-    $("#potrait").click(function (event) {
-        event.preventDefault();
-        $("#user-dropdown").toggleClass("hidden")
-    })
+  //Log Out button pop up window
+  $("#potrait").click(function (event) {
+    event.preventDefault();
+    $("#user-dropdown").toggleClass("hidden")
+  })
 
-    $(document).on('click', '.menuBtn', function (event){
-      event.preventDefault();
-      let btnValue = $(this).val()
-      $("#" + btnValue + "dropDown").toggleClass("hidden")
-    })
+  //Cards pop up window
+  $(document).on('click', '.menuBtn', function (event) {
+    event.preventDefault();
+    const {
+      open
+    } = $(this).data();
+    console.log(open);
+    $("#" + open).toggleClass("hidden")
+  })
 
-    $("#addbookmark").on('keypress', function(event) {
-        if (event.which == '13'){
-            console.log($(this).val().trim())
-        
+  //bin button pop up window
+  $(document).on('click', '.binBtn', function (event) {
+    event.preventDefault();
+    const {
+      open
+    } = $(this).data();
+    console.log(open);
+    $("#" + open).toggleClass("hidden")
+  })
+
+  //Generated Tag Delete 'No'
+  $(".delNoBtn").on('click', function (event) {
+    event.preventDefault();
+    const {
+      close
+    } = $(this).data();
+    console.log(close);
+    $("#" + close).toggleClass("hidden")
+  })
+
+  // POST REQUESTS
+
+  //Add BookMark bar - WORKING
+  $("#addBookmark").on('submit', function (event) {
+    event.preventDefault();
+    regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+    let tagInput = $("#bookmarkInput").val().trim();
+    let tagVal = tagInput.toLowerCase()
+    let userID = "2"
+    const bookmark = {
+      url: tagVal,
+      userID: userID
+      }
+
+    if (regexp.test(tagVal)) {
+      console.log("true");
+      // Do Ajax call here
+
+      $.ajax("/bookmarks", {
+        type: 'POST',
+        data: bookmark,
+      }).then(
+        function(){
+          location.reload(true);
+        }
+      )
+
+    } else {
+      console.log("false");
+      //Do an alert here
     }
-});
+  });
 
-});
 
-console.log("test")
+  //Create Tag in DropDown box
+  $(document).on('submit', '.createTagForm', function (event) {
+    event.preventDefault();
+    regexp = /^[a-z ,.'-]+$/i
+    let inputTag = $(".createTag").val().trim();
+    let userID = "2"
+    let tag = {
+      name: inputTag,
+      userID: userID
+    }
+    if (regexp.test(inputTag)) {
+      console.log("Added Tag");
+      // Do Ajax call here
+
+      $.ajax("/tags", {
+        type: 'POST',
+        data: tag,
+      }).then(
+        function(){
+          location.reload(true);
+        }
+      )
+
+    } else {
+      console.log("Tag Input Error");
+      //Do an alert here
+    }
+  })
+
+
+  // PUT REQUESTS
+
+  //Remove tag in DropDown box
+  $(".removeBtn").on('click', function (event) {
+    event.preventDefault();
+    console.log("remove btn clicked")
+    //Do something
+
+    ////ID still needs to be inserted into HTML
+    //const tagID = $(event.target).data("id") 
+    //console.log(tagID)
+    // const removeTag = {
+    //   id: tagID,
+    // }
+        // $.ajax("/tags/ + tagID", {
+      //   type: 'PUT',
+      //   data: removeTag,
+      // }).then(
+      //   function(){
+      //     location.reload(true);
+      //   }
+      // )
+  })
+
+
+  //DELETE REQUESTS
+
+  //Generated Tag Delete 'Yes'
+  $(".delYesBtn").on('click', function (event) {
+    event.preventDefault();
+    console.log("Delete btn clicked")
+
+    ////ID still needs to be inserted into HTML
+    //const tagID = $(event.target).data("id") 
+    //console.log(tagID)
+    // const deleteTag = {
+    //   id: tagID,
+    // }
+        // $.ajax("/tags/ + tagID", {
+      //   type: 'DELETE',
+      //   data: deleteTag,
+      // }).then(
+      //   function(){
+      //     location.reload(true);
+      //   }
+      // )
+
+  })
+
+
+  // GET REQUESTS ???
+
+  //No Bookmark Tag
+  $("#noTagBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("You have click tag: No Tag Btn")
+    //Do something
+
+    //const noTags = select all where no tag?
+    // const noTag = {
+    //   where: *?,
+    // }
+        // $.ajax("/tags", {
+      //   type: 'GET',
+      //   data: noTag,
+      // }).then(
+      //   function(){
+      //     location.reload(true);
+      //   }
+      // )
+  })
+
+    //All Bookmark Tag
+    $("#allBookmarks").on("click", function (event) {
+      event.preventDefault();
+      console.log("You have click tag: all bookmarks Btn")
+      //Do something
+  
+      //const allBM = select all URLS
+      //const allBooks = {
+      //   where: *?,
+      // }
+          // $.ajax("/tags", {
+        //   type: 'GET',
+        //   data: allBooks,
+        // }).then(
+        //   function(){
+        //     location.reload(true);
+        //   }
+        // )
+    })
+
+  //Generated Tag Btn
+  $(".generatedTag").on('click', function (event) {
+    event.preventDefault();
+    const btnValue = $(this).val()
+    console.log("You have click tag: " + btnValue)
+    //Do Something
+
+    // const tagSelection = {
+    //   where: btnValue 
+    // }
+        // $.ajax("/tags", {
+      //   type: 'GET',
+      //   data: tagSelection,
+      // }).then(
+      //   function(){
+      //     location.reload(true);
+      //   }
+      // )
+  })
+
+  //Log Out Button
+  $("#logOut").on("click", function (event) {
+    event.preventDefault();
+    console.log("Log Out Button Pushed");
+    // Do something
+
+    // $.ajax({
+    //   type: 'GET',
+    //   data: {action:'logout'},
+    //   success: function(data){
+    //   alert(data);
+             //location.reload();
+          //window.location.href = data;
+  //     }
+  // });
+  })
 
 console.log($("#addBookmarkID"));
 
-$("#addBookmarkID").on('submit', function(event){
-    event.preventDefault();
-    console.log("submit fired");
-    let test = $(".addBookmark");
-    console.log($(test).val().trim());
-})
 
-
-// ################### JOSH'S HAMBURGER APP ###########################
-  
-          const newBurger = $("#BurgerID");
-          const newBurger = {
-            title: $("#BurgerID").val().trim(),
-            // Sauce: $('#inputSauce option:selected').val(),
-            // Patty: $('#inputPatty option:selected').val(),
-            // Topping: toppings
-          };
-  
-          function runAjax() {
-            // Send the POST request.
-            $.ajax("/newburger", {
-              type: "POST",
-              data: newBurger,
-            }).then(function () {
-              // Reload the page to get the updated list from server(true) or cache (false)
-              location.reload(true);
-            });
-          }
-          //console.log(newBurger)   
-  
-          if ($("#BurgerID").val() === "") {
-            alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!");
-          } else if ($("#inputSauce option:selected").val() === "0") {
-            alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!");
-          } else if ($("#inputPatty option:selected").val() === "0") {
-            alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!");
-          } else {
-            runAjax();
-            alert("Burger Order Submitted");
-          }
-
-    // Purchase UPDATE
-  
-    $(".purchaseBtn").on("click", function (event) {
-      event.preventDefault();
-      //
-      const burgerID = $(event.target).data("id");
-  
-      const sold = {
-        id: burgerID,
-      };
-  
-      //console.log(sold)
-  
-      // Send the PUT request.
-      $.ajax("/burgers/" + burgerID, {
-        type: "PUT",
-        data: sold,
-      }).then(function () {
-        //console.log("Bye Bye burger", sold);
-        // Reload the page to get the updated list
-        location.reload();
-      });
-    });
-  
-    $(".delBtn").on("click", function (event) {
-      const burgerID = $(event.target).data("id");
-      event.preventDefault();
-      // Send the DELETE request.
-      $.ajax("/burgers/" + burgerID, {
-        type: "DELETE",
-      }).then(function () {
-        //console.log("deleted burger", burgerID);
-        // Reload the page to get the updated list
-        location.reload();
-      });
-    });
-  
-// ################### end JOSH'S HAMBURGER APP ###########################
+});

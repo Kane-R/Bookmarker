@@ -1,6 +1,4 @@
 
---create tables--
-
 -- CREATE DATABASE bookmarkr_db;
 
 -- USE bookmarkr_db;
