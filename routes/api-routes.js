@@ -1,36 +1,31 @@
-
 // Requiring our models and passport as we've configured it
 
 const express = require("express");
-const router = express.Router();
-
-
 const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function (app) {
 
   //route to sign up user
-
   app.post("/api/signup", function(req,res) {
     db.user.create({
       
     })
 
-  })
+  });
 
   //route for logging out
-
   app.post("/api/login"), function(req,res) {
     
-  }
+  };
 
   //route for getting user data
 
-
-
     //routes 
-
+    app.get("/api/bookmarks"), function (req,res) {
+      db.model.findAll();
+    }
+  
 
 }
 

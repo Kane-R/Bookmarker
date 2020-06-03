@@ -1,0 +1,8 @@
+.fontPM {
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: rgb(82, 82, 76) 2px 2px;
+}
+
+.cardBG {
+    background-image: url("/assets/img/light-final-painting-featured-image.jpg");
+}
