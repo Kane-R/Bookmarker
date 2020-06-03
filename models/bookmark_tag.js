@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     bookmarkID: DataTypes.INTEGER,
     tagID: DataTypes.INTEGER
   }, {});
+  
   Bookmark_Tag.associate = function(models) {
     // associations can be defined here
   };

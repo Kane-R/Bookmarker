@@ -1,58 +1,55 @@
 const path = require("path")
 const express = require("express");
-// const router = express.Router();
 const db = require("../models");
 const chalk = require('chalk')
 
 module.exports = function(app) {
 
-//Login page
-// create home route
-app.get('/', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    //set to members while developing - remember to change this
-    res.render('home');
-});
+    //Login page
+    // create home route
+    app.get('/', function (req, res) {
+        if (req.user) {
+            res.redirect("/members");
+        }
+        //set to members while developing - remember to change this
+        res.render('home');
+    });
 
+    // Members page (dashboard)
+    app.get('/members', function (req, res) {
+        if (req.user) {
+            res.redirect("/members");
+        }
+        db.Bookmark.findAll({
+            attributes: ['url']
+        })
+        .then((bookmark) => {
+            let bookm = JSON.parse(JSON.stringify(bookmark));
+            console.log(chalk.green(bookm) + "\n")
 
-// Members page (dashboard)
-app.get('/members', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    db.Bookmark.findAll({
-        attributes: ['url']
-    }).then((bookmark) => {
-        let bookm = JSON.parse(JSON.stringify(bookmark));
-        console.log(chalk.green(bookm) + "\n")
-
-            db.Tag.findAll({
-                attributes: ['name']
-            }).then((tag) => {
-                let atag = JSON.parse(JSON.stringify(tag));
-                console.log(chalk.magenta(atag) + "\n")
-
-                db.User.findAll({
+                db.Tag.findAll({
                     attributes: ['name']
-                }).then((user) => {
-                    let user1 = JSON.parse(JSON.stringify(user));
-                    console.log(chalk.blue(user) + "\n")
+                })
+                .then((tag) => {
+                    let atag = JSON.parse(JSON.stringify(tag));
+                    console.log(chalk.magenta(atag) + "\n")
 
-                    const completeArray = { 
-                        bookm, atag, user1
-                    }
+                    db.User.findAll({
+                        attributes: ['displayName']
+                    }).then((user) => {
+                        let user1 = JSON.parse(JSON.stringify(user));
+                        console.log(chalk.blue(user) + "\n")
 
-                    console.log(completeArray)
+                        const completeArray = { 
+                            bookm, atag, user1
+                        }
 
-                    res.render('index', completeArray);
+                        console.log(completeArray)
+
+                        res.render('index', completeArray);
+                    })
                 })
         })
-    })
-});
-
+    });
 
 }
-
-// module.exports = router;
