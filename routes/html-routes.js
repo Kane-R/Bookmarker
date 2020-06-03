@@ -5,8 +5,20 @@ const db = require("../models");
 const chalk = require('chalk')
 
 
-//Main Page - includes sign up and login button
+
+//Login page
+// create home route
 router.get('/', function (req, res) {
+    if (req.user) {
+        res.redirect("/members");
+    }
+    //set to members while developing - remember to change this
+    res.render('home');
+});
+
+
+// Members page (dashboard)
+router.get('/members', function (req, res) {
     if (req.user) {
         res.redirect("/members");
     }
@@ -41,23 +53,6 @@ router.get('/', function (req, res) {
 });
 
 
-//Login page
-router.get('/login', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    //set to members while developing - remember to change this
-    res.sendFile(path.join(__dirname, "../public/mock/login.html"));
-});
 
-// Members page (dashboard)
-
-router.get('/dashboard', function (req, res) {
-    if (req.user) {
-        res.redirect("/members");
-    }
-    //set to members while developing - remember to change this
-    res.sendFile(path.join(__dirname, "../public/mock/member.html"));
-});
 
 module.exports = router;
