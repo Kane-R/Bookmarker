@@ -17,9 +17,6 @@ module.exports = function(app) {
 
     // Members page (dashboard)
     app.get('/members', function (req, res) {
-        if (req.user) {
-            res.redirect("/members");
-        }
         db.Bookmark.findAll({
             attributes: ['url']
         })
