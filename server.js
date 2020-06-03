@@ -5,7 +5,7 @@ const passport = require('./config/passport-setup');
 const exphbs = require('express-handlebars');
 const chalk = require('chalk')
 const path = require("path");
-const app = express();
+let app = express();
 const keys = require('./config/keys');
 const authRoutes = require('./routes/auth-routes');
 
@@ -34,9 +34,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Requiring our routes
-const routes = require("./routes/html-routes.js");
-app.use("/", routes);
-require("./routes/api-routes.js")
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {

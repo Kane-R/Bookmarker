@@ -1,14 +1,14 @@
 const path = require("path")
 const express = require("express");
-const router = express.Router();
+// const router = express.Router();
 const db = require("../models");
 const chalk = require('chalk')
 
-
+module.exports = function(app) {
 
 //Login page
 // create home route
-router.get('/', function (req, res) {
+app.get('/', function (req, res) {
     if (req.user) {
         res.redirect("/members");
     }
@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 
 
 // Members page (dashboard)
-router.get('/members', function (req, res) {
+app.get('/members', function (req, res) {
     if (req.user) {
         res.redirect("/members");
     }
@@ -53,6 +53,6 @@ router.get('/members', function (req, res) {
 });
 
 
+}
 
-
-module.exports = router;
+// module.exports = router;
