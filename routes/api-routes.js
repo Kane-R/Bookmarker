@@ -2,8 +2,6 @@
 
 const db = require("../models");
 
-
-
 module.exports = function(app) {
 
   // POST route for saving a new bookmark

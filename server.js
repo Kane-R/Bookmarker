@@ -40,6 +40,6 @@ require("./routes/api-routes.js")(app);
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log(chalk.bold.blue("🌎  Listening on port %s. "), chalk.bold.yellow(PORT) + chalk.bold.green("\nVisit ") + chalk.bold.blue("http://localhost:") + chalk.bold.yellow(PORT) + chalk.bold.blue("/") + chalk.bold.green(" in your browser"));
+    console.log(chalk.bold.blue("🌎 Listening on port %s. "), chalk.bold.yellow(PORT) + chalk.bold.green("\nVisit ") + chalk.bold.blue("http://localhost:") + chalk.bold.yellow(PORT) + chalk.bold.blue("/") + chalk.bold.green(" in your browser"));
   });
 });
