@@ -20,36 +20,59 @@ module.exports = function(app){
         if (req.user) {
             res.redirect("/members");
         }
-        db.Bookmark.findAll({
-            attributes: ['url']
-        })
-        .then((bookmark) => {
-            let bookm = JSON.parse(JSON.stringify(bookmark));
-            console.log(chalk.green(bookm) + "\n")
+        
+        const query = {
+            id: 2 
+        }
+       db.User.findOne({
+           where: query,
+           include: [
+            {
+                model: db.Bookmark,
+                include: [
+                    {
+                        model: db.Tag,
+                    }
+                ],
+        }]
+       }).then((user)=>{
 
-                db.Tag.findAll({
-                    attributes: ['name']
-                })
-                .then((tag) => {
-                    let atag = JSON.parse(JSON.stringify(tag));
-                    console.log(chalk.magenta(atag) + "\n")
-
-                    db.User.findAll({
-                        attributes: ['displayName']
-                    }).then((user) => {
-                        let user1 = JSON.parse(JSON.stringify(user));
-                        console.log(chalk.blue(user) + "\n")
-
-                        const completeArray = { 
-                            bookm, atag, user1
-                        }
-
-                        console.log(completeArray)
-
-                        res.render('index', completeArray);
-                    })
-                })
-        })
+        const result = JSON.parse(JSON.stringify(user))
+           //res.json(user)
+           res.render('index', result)
+       })
     });
 
 }
+
+
+        //     db.Bookmark.findAll({
+        //     attributes: ['url']
+        // })
+        // .then((bookmark) => {
+        //     let bookm = JSON.parse(JSON.stringify(bookmark));
+        //     console.log(chalk.green(bookm) + "\n")
+
+        //         db.Tag.findAll({
+        //             attributes: ['name']
+        //         })
+        //         .then((tag) => {
+        //             let atag = JSON.parse(JSON.stringify(tag));
+        //             console.log(chalk.magenta(atag) + "\n")
+
+        //             db.User.findAll({
+        //                 attributes: ['displayName']
+        //             }).then((user) => {
+        //                 let user1 = JSON.parse(JSON.stringify(user));
+        //                 console.log(chalk.blue(user) + "\n")
+
+        //                 const completeArray = { 
+        //                     bookm, atag, user1
+        //                 }
+
+        //                 console.log(completeArray)
+
+        //                 res.render('index', completeArray);
+        //             })
+        //         })
+        // })
