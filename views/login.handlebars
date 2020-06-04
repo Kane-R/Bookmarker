@@ -1,23 +1,31 @@
 <!--ALL MAIN-->
-<div class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="background: url('public/assets/img/background-hex_1024x768.jpg')">
+     <nav>
+            <ul>
+                <li><a href="/auth/logout">Logout</a></li>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/">Homepage</a></li>
+            </ul>
+        </nav>
+
+<div class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="background: url('./background-hex_1024x768.jpg')">
 	<div class="pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 		<!--LEFT MAIN-->
 		<div class="px-20 flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
 			<!-- LOGO & TITLE -->	
 			<div>
 				<div class="flex items-center">
-					<img class="pr-3 flex items-center slide-in-bottom" src="public/assets/img/logo-50x50.png" /> 
+					<img class="pr-3 flex items-center slide-in-bottom" src="./logo-50x50.png" /> 
 					<span class="text-pink-600 text-3xl text-base md:text-5xl ms:text- font-bold leading-tight text-center md:text-left pr-16 slide-in-bottom-h1">Bookmarkr</span>
 				</div>
 			</div>			
 			<!-- TAGLINE -->
 			<p class="leading-normal text-base text-xl mb-8 text-center md:text-left slide-in-bottom-subtitle">The site to bookmark for all your bookmarks</p>
 			<!-- GOOGLE LOGIN BUTTON-->
-			<div class="g-signin2 h-12 bounce-top-icons flex w-full justify-center md:justify-start pb-5 lg:pb-0 fade-in" data-onsuccess="onSignIn" data-theme="dark"></div>
+			 <a class="google-btn h-12 bounce-top-icons flex w-full justify-center md:justify-start pb-5 lg:pb-0 fade-in" href="/auth/google">Google+</a>
 		</div>
 		<!-- RIGHT MAIN WITH HERO IMAGE -->
 		<div class="px-8 w-full xl:w-3/5 py-6 overflow-y-hidden">
-			<img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="public/assets/img/hero.png">
+			<img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="./hero.png">
 		</div>
 		<!--FOOTER-->
 		<div class="px-20 w-full text-sm text-center md:text-left fade-in">
@@ -26,20 +34,4 @@
 	</div>
 </div>
 
-<script src="js/login.js"></script>
-
-    <body>
-        <nav>
-            <ul>
-                <li><a href="/auth/logout">Logout</a></li>
-                <li><a href="/auth/login">Login</a></li>
-                <li><a href="/">Homepage</a></li>
-            </ul>
-        </nav>
-        <header>
-            <h1>Login using...</h1>
-        </header>
-        <main>
-             <a class="google-btn" href="/auth/google">Google+</a>
-            {{!-- <div data-onsuccess="onSignIn" data-theme="dark"></div> --}}
-        </main>
+  <link rel="stylesheet" href="./login.css">
