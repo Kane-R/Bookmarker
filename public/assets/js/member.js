@@ -1,22 +1,3 @@
-function onSignIn(googleUser) {
-  // get user profile information
-  let gProfile = googleUser.getBasicProfile()
-  let gName = googleUser.getBasicProfile().getName()
-  let gEmail = googleUser.getBasicProfile().getEmail()
-  console.log(gProfile);
-  console.log(gName);
-  console.log(gEmail);
-
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());
-}
-
-
-
 $(document).ready(function () {
 
   //Log Out button pop up window
@@ -63,10 +44,13 @@ $(document).ready(function () {
     regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     let tagInput = $("#bookmarkInput").val().trim();
     let tagVal = tagInput.toLowerCase()
-    const userID = "2"
+    let userID = $.getJSON( "details.json", function( json ) {
+    
+    
+    console.log("This is the YOUR USER ID: " + json.id)
 
     const bookmark = {
-      userID: userID,
+      userID: json.id,
       url: tagVal,
     }
 
@@ -120,7 +104,8 @@ $(document).ready(function () {
     }
   })
 
-
+  
+     });
   // PUT REQUESTS
 
   //Remove tag in DropDown box
