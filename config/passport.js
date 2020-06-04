@@ -1,37 +1,70 @@
-// const passport = require('passport');
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('./keys');
+const db = require("../models");
+const chalk = require("chalk")
+const fs = require("fs")
 
-// passport.serializeUser(function(user, done) {
-//     /*
-//     From the user take just the id (to minimize the cookie size) and just pass the id of the user
-//     to the done callback
-//     PS: You dont have to do it like this its just usually done like this
-//     */
-//     done(null, user);
-//   });
-  
-// passport.deserializeUser(function(user, done) {
-//     /*
-//     Instead of user this function usually recives the id 
-//     then you use the id to select the user from the db and pass the user obj to the done callback
-//     PS: You can later access this data in any routes in: req.user
-//     */
-//     done(null, user);
-// });
+passport.use(
+    new GoogleStrategy({
+        // options for google strategy
+        clientID: keys.google.clientID,
+        clientSecret: keys.google.clientSecret,
+        callbackURL: '/auth/google/redirect'
+    }, (accessToken, refreshToken, profile, done) => {
+        //passport callback function
+        //console.log('passport callback function fired:');
+        console.log(chalk.red(JSON.stringify(profile, null, 2)));
+        console.log(chalk.yellow(profile.displayName));
+        console.log(chalk.green(profile.photos[0].value));
+        //console.log(accessToken);
 
-// passport.use(new GoogleStrategy({
-//     clientID: "1051.............",
-//     clientSecret: "fx-x............",
-//     callbackURL: "http://localhost:3000/google/callback"
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//     /*
-//      use the profile info (mainly profile id) to check if the user is registerd in ur db
-//      If yes select the user and pass him to the done callback
-//      If not create the user and then select him and pass to callback
-//     */
-//     return done(null, profile);
-//   }
-// ));
+        db.User.findOrCreate({
+            where: {
+                googleId: profile.id,
+            },
+            defaults: {
+                displayName: profile.displayName,
+                avatar: profile.photos[0].value
 
-// module.exports = passport;
+            },
+        }).then(([user], err) => {
+            console.log(chalk.blue(JSON.stringify(user)))
+            
+            const patron = {
+                id: user.id,
+                name: user.displayName,
+                avatar: user.avatar
+            } 
+            const patronString = JSON.stringify(patron)
+
+            fs.writeFile('./public/details.json', patronString, err => {
+                if (err) {
+                    console.log('Error has occurred with Write JSON file')
+                } else {
+                    console.log('Success, JSON File has been written')
+                }
+            })
+            done(err, user);
+        });
+    }
+
+   
+));
+
+// In order to help keep authentication state across HTTP requests,
+// Sequelize needs to serialize and deserialize the user
+// Just consider this part boilerplate needed to make it all work
+passport.serializeUser(function(user, cb) {
+    cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
+});
+
+
+module.exports = passport;
+
+
+      

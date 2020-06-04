@@ -1,7 +1,7 @@
 // NPM packages
 const express = require("express");
 const session = require("express-session");
-const passport = require('./config/passport-setup');
+const passport = require('./config/passport');
 const exphbs = require('express-handlebars');
 const chalk = require('chalk')
 const path = require("path");
