@@ -33,8 +33,7 @@ module.exports = function(app) {
   app.post("/tags", function(req, res) {
     console.log(req.body);
     db.Tag.create({
-      name: req.body.name,
-      userID: req.body.userID
+      name: req.body.name
     })
       .then(function(dbTag) {
         res.json(dbTag);
