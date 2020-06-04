@@ -14,9 +14,9 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         //passport callback function
         //console.log('passport callback function fired:');
-        console.log(chalk.red(JSON.stringify(profile, null, 2)));
-        console.log(chalk.yellow(profile.displayName));
-        console.log(chalk.green(profile.photos[0].value));
+       // console.log(chalk.red(JSON.stringify(profile, null, 2)));
+       // console.log(chalk.yellow(profile.displayName));
+       // console.log(chalk.green(profile.photos[0].value));
         //console.log(accessToken);
 
         db.User.findOrCreate({
@@ -29,7 +29,7 @@ passport.use(
 
             },
         }).then(([user], err) => {
-            console.log(chalk.blue(JSON.stringify(user)))
+           // console.log(chalk.blue(JSON.stringify(user)))
             
             const patron = {
                 id: user.id,
