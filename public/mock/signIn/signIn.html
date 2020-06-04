@@ -11,18 +11,8 @@
     <meta name="google-signin-client_id" content="339055223599-fuvqrag4o5n0aql4q4kj67kb0cs9jkfp.apps.googleusercontent.com">
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<!-- end HEAD FROM MITCHELLE -->
-
-	<!-- head from original -->
-	<!-- <meta name="keywords" content=""> -->
-	
-    <!-- Font Awesome if req'd -->
-	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"> -->
-	
-	<!--TAILWIND - ANY BENEFIT TO LINK THIS LOCALLY?-->
 	<link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
-	
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-	
 	<!-- CSS FOR ANIMATION-->
 	<style>				 
 		.slide-in-bottom{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both}
@@ -30,61 +20,37 @@
 		.slide-in-bottom-subtitle{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .75s both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .75s both}
 		.fade-in{-webkit-animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) 1s both;animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) 1s both}
 		.bounce-top-icons{-webkit-animation:bounce-top .9s 1s both;animation:bounce-top .9s 1s both}
-		
 		@-webkit-keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
 		@-webkit-keyframes bounce-top{0%{-webkit-transform:translateY(-45px);transform:translateY(-45px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{-webkit-transform:translateY(-24px);transform:translateY(-24px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}65%{-webkit-transform:translateY(-12px);transform:translateY(-12px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}82%{-webkit-transform:translateY(-6px);transform:translateY(-6px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}93%{-webkit-transform:translateY(-4px);transform:translateY(-4px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}25%,55%,75%,87%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}}@keyframes bounce-top{0%{-webkit-transform:translateY(-45px);transform:translateY(-45px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{-webkit-transform:translateY(-24px);transform:translateY(-24px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}65%{-webkit-transform:translateY(-12px);transform:translateY(-12px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}82%{-webkit-transform:translateY(-6px);transform:translateY(-6px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}93%{-webkit-transform:translateY(-4px);transform:translateY(-4px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}25%,55%,75%,87%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}}
 		@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}				
 	</style>
-
 </head>
-<!-- ORIGINAL BODY -->
-<!-- <body class="leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;"> -->
-
-<body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="background: url('images/background-hex_1024x768.jpg')">
-
-<!-- <div class="h-screen bg-right bg-cover" style="background-image:url('bg.svg');"> -->
 
 	<!--ALL MAIN-->
-	<div class="pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-	
-		<!--LEFT MAIN-->
-		<div class="px-20 flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-
-			<!-- LOGO & TITLE -->
-			<div>
-				<img class="object-none md:object-left h-12 w-full" src="images/logo-50x50.png"/> 
-				<h1 class="my-4 h-full text-3xl md:text-5xl text-pink-600 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">Bookmarkr</h1>
+	<body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="background: url('images/background-hex_1024x768.jpg')">
+		<div class="pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+			<!--LEFT MAIN-->
+			<div class="px-20 flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+				<!-- LOGO & TITLE -->	
+				<div>
+					<div class="flex items-center">
+						<img class="pr-3 flex items-center slide-in-bottom" src="images/logo-50x50.png" />
+						<span class="text-pink-600 text-3xl text-base md:text-5xl ms:text- font-bold leading-tight text-center md:text-left pr-16 slide-in-bottom-h1">Bookmarkr</span>
+					</div>
+				</div>			
+				<!-- TAGLINE -->
+				<p class="leading-normal text-base text-xl mb-8 text-center md:text-left slide-in-bottom-subtitle">The site to bookmark for all your bookmarks</p>
+				<!-- GOOGLE LOGIN BUTTON-->
+				<div class="g-signin2 h-12 bounce-top-icons flex w-full justify-center md:justify-start pb-5 lg:pb-0 fade-in" data-onsuccess="onSignIn" data-theme="dark"></div>
 			</div>
-
-			<!-- TAG LINE -->
-			<p class="leading-normal text-base text-xl mb-8 text-center md:text-left slide-in-bottom-subtitle">The site to bookmark for all your bookmarks</p>
-
-			<!-- GOOGLE LOGIN BUTTON-->
-			<div class="g-signin2 h-12 bounce-top-icons flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in" data-onsuccess="onSignIn" data-theme="dark"></div>
-
-			<!-- COPYRIGHT-->
-			<div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+			<!-- RIGHT MAIN WITH HERO IMAGE -->
+			<div class="px-8 w-full xl:w-3/5 py-6 overflow-y-hidden">
+				<img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="images/hero.png">
+			</div>
+			<!--FOOTER (copyright was too low here)-->
+			<div class="px-20 w-full text-sm text-center md:text-left fade-in">
 				<a class="no-underline hover:no-underline" href="#">&copy; The DivDiv Team 2020</a>
 			</div>
-
 		</div>
-	
-		<!-- RIGHT MAIN WITH HERO IMAGE -->
-		<div class="px-20 w-full xl:w-3/5 py-6 overflow-y-hidden">
-			<img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="images/hero.png">
-		</div>
-		
-		<!--FOOTER (copyright was too low here)-->
-		<!-- <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-			<a class="no-underline hover:no-underline" href="#">&copy; The DivDiv Team 2020</a>
-		</div> -->
-
-	</div>
-
-  <!-- jQuery if you need it
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
-
-</body>
-
+	</body>
 </html>
