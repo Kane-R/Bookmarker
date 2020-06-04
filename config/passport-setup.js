@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
 const db = require("../models");
+const chalk = require("chalk")
 
 passport.use(
     new GoogleStrategy({
@@ -12,8 +13,8 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         //passport callback function
         //console.log('passport callback function fired:');
-        console.log(profile);
-        console.log(profile.displayName);
+        console.log(chalk.red(profile));
+        console.log(chalk.yellow(profile.displayName));
         //console.log(accessToken);
         db.User.findOrCreate({
             where: {
@@ -23,10 +24,8 @@ passport.use(
                 displayName: profile.displayName,
             },
         }).then(([user], err) => {
-    
-            console.log(JSON.stringify(user))
-            
-            done(err, user);
+            console.log(chalk.blue(JSON.stringify(user.id)))
+            return done(err, user);
         });
     }
 

@@ -8,19 +8,21 @@ module.exports = function(app){
     //Login page
     // create home route
     app.get('/', function (req, res) {
-        if (req.user) {
-            res.redirect("/members");
-        }
+        // if (req.user) {
+        //     res.redirect("/members");
+        // }
         //set to members while developing - remember to change this
+       
         res.render('home');
     });
 
     // Members page (dashboard)
-    app.get('/members', function (req, res) {
-        if (req.user) {
-            res.redirect("/members");
-        }
-        
+    app.get('/members/:id', function (req, res) {
+        // if (req.user) {
+        //     res.redirect("/members");
+        // }
+        //console.log(chalk.magenta((req.user)))
+        console.log(req.params.id)
         const query = {
             id: 2 
         }
