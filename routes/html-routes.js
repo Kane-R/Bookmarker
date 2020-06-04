@@ -2,9 +2,9 @@ const path = require("path")
 const express = require("express");
 const db = require("../models");
 const chalk = require('chalk')
+const fs = require('fs');
 
 module.exports = function(app){
-
     //Login page
     // create home route
     app.get('/', function (req, res) {
@@ -12,67 +12,41 @@ module.exports = function(app){
         //     res.redirect("/members");
         // }
         //set to members while developing - remember to change this
-       
-        res.render('home');
+        res.render('login');
     });
 
     // Members page (dashboard)
     app.get('/members', function (req, res) {
+        fs.readFile('./public/details.json', 'utf8', (err, jsonString) => {
+            if (err) {
+                console.log("Error reading file from disk:", err)
+            return
+            }
+            try {
+                const user = JSON.parse(jsonString)
+                console.log("User is:", user.id) 
+                let query = user.id
+                console.log("fs userID" + query);
+                db.User.findOne({
+                    where: query,
+                    include: [
+                     {
+                         model: db.Bookmark,
+                         include: [
+                             {
+                                 model: db.Tag,
+                             }
+                         ],
+                 }]
+                }).then((user)=>{
+                 const result = JSON.parse(JSON.stringify(user))
+                    //res.json(user)
+                    res.render('index', result)
+                })
+            } catch(err) {
+                console.log('Error parsing JSON string:', err)
+            }
+        })
 
-        
-        
-        const query = {
-            id: 2 
-        }
-        db.User.findOne({
-           where: query,
-           include: [
-            {
-                model: db.Bookmark,
-                include: [
-                    {
-                        model: db.Tag,
-                    }
-                ],
-        }]
-       }).then((user)=>{
-
-        const result = JSON.parse(JSON.stringify(user))
-           //res.json(user)
-           res.render('index', result)
-       })
-    });
-
+})
 }
-
-
-        //     db.Bookmark.findAll({
-        //     attributes: ['url']
-        // })
-        // .then((bookmark) => {
-        //     let bookm = JSON.parse(JSON.stringify(bookmark));
-        //     console.log(chalk.green(bookm) + "\n")
-
-        //         db.Tag.findAll({
-        //             attributes: ['name']
-        //         })
-        //         .then((tag) => {
-        //             let atag = JSON.parse(JSON.stringify(tag));
-        //             console.log(chalk.magenta(atag) + "\n")
-
-        //             db.User.findAll({
-        //                 attributes: ['displayName']
-        //             }).then((user) => {
-        //                 let user1 = JSON.parse(JSON.stringify(user));
-        //                 console.log(chalk.blue(user) + "\n")
-
-        //                 const completeArray = { 
-        //                     bookm, atag, user1
-        //                 }
-
-        //                 console.log(completeArray)
-
-        //                 res.render('index', completeArray);
-        //             })
-        //         })
-        // })
