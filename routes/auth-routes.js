@@ -27,7 +27,7 @@ router.get('/google/redirect', passport.authenticate('google'),(req,res) => {
     //db.User.create('users').then(result => console.log (chalk.green(result.id)));
 
     console.log(chalk.blue(JSON.stringify[req.query]))
-    res.redirect('/members/:id')
+    res.redirect('/members')
 });
 
 module.exports = router;

@@ -18,6 +18,8 @@ module.exports = function(app){
 
     // Members page (dashboard)
     app.get('/members', function (req, res) {
+
+        
         
         const query = {
             id: 2 

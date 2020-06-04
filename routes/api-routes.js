@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
 
   // delete a bookmark
-  app.delete("/bookmarks/:id", function(req, res) {
+  app.delete("/bookmarks", function(req, res) {
     db.Bookmark.destroy({
       where: {
         id: req.params.id
