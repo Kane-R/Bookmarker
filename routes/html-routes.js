@@ -8,15 +8,18 @@ module.exports = function(app){
     //Login page
     // create home route
     app.get('/', function (req, res) {
-        if (req.user) {
-            res.redirect("/members");
-        }
+        // if (req.user) {
+        //     res.redirect("/members");
+        // }
         //set to members while developing - remember to change this
+       
         res.render('home');
     });
 
     // Members page (dashboard)
     app.get('/members', function (req, res) {
+
+        
         
         const query = {
             id: 2 
