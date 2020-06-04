@@ -16,28 +16,43 @@ module.exports = function(app) {
   });
 
   // delete a bookmark
-  app.delete("/bookmarks", function(req, res) {
-    db.Bookmark.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(function(dbBookmark) {
-      res.json(dbBookmark);
-    });
-  });
+  // app.delete("/bookmarks", function(req, res) {
+  //   db.Bookmark.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //   .then(function(dbBookmark) {
+  //     res.json(dbBookmark);
+  //   });
+  // });
 
 
   //add tags - Need to define bookmark relation
   app.post("/tags", function(req, res) {
+   
     console.log(req.body);
+   
     db.Tag.create({
       name: req.body.name
     })
       .then(function(dbTag) {
         res.json(dbTag);
       });
+
+      db.Bookmark_Tag.create({
+        bookmarkID: req.body.bookID,
+        tagID: req.body.tagID
+      }).then(function(dbTag) {        
+          res.json(dbTag);
+        });
   });
+
+  // //add bookmark_tags - Need to define bookmark relation
+  // app.post("/tags", function(req, res) {
+   
+  
+  // });
 
   //add tag in relation to bookmark
 
@@ -67,7 +82,7 @@ module.exports = function(app) {
 
   //get all tags for user
 
-  app.get("/tags", function(req,res) {})
+  // app.get("/tags", function(req,res) {})
 
 
 

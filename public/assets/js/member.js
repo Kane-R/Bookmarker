@@ -44,57 +44,76 @@ $(document).ready(function () {
     regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     let tagInput = $("#bookmarkInput").val().trim();
     let tagVal = tagInput.toLowerCase()
-    let userID = $.getJSON( "details.json", function( json ) {
-    
-    
-    console.log("This is the YOUR USER ID: " + json.id)
+    $.getJSON("details.json", function (json) {
 
-    const bookmark = {
-      userID: json.id,
-      url: tagVal,
-    }
+      console.log("This is the YOUR USER ID: " + json.id)
 
+      const bookmark = {
+        userID: json.id,
+        url: tagVal,
+      }
 
-    if (regexp.test(tagVal)) {
-      console.log("true");
-      // Do Ajax call here
+      if (regexp.test(tagVal)) {
+        console.log("true");
+        // Do Ajax call here
 
-      $.ajax("/bookmarks", {
-        type: 'POST',
-        data: bookmark
-      }).then(
-        function(){
-          location.reload(true);
-        }
-      )
+        $.ajax("/bookmarks", {
+          type: 'POST',
+          data: bookmark
+        }).then(
+          function () {
+            location.reload(true);
+          }
+        )
 
-    } else {
-      console.log("false");
-      //Do an alert here
-    }
-  });
-
+      } else {
+        console.log("false");
+        //Do an alert here
+      }
+    });
+  })
 
   //Create Tag in DropDown box
   $(document).on('submit', '.createTagForm', function (event) {
     event.preventDefault();
     regexp = /^[a-z ,.'-]+$/i
-    let inputTag = $(".createTag").val().trim();
-    let userID = "2"
+    const {
+      number
+    } = $(this).data();
+
+    console.log(number);
+    console.log($("#" + number).val().trim());
+    const tagName = $("#" + number).val().trim()
+
     let tag = {
-      name: inputTag,
-      userID: userID
+      name: tagName,
     }
-    if (regexp.test(inputTag)) {
+    if (regexp.test(tagName)) {
       console.log("Added Tag");
-      // Do Ajax call here
 
       $.ajax("/tags", {
         type: 'POST',
         data: tag,
       }).then(
-        function(){
-          location.reload(true);
+        function (response) {
+       
+          let bookTags = {
+            bookID: number,
+            tagID: response.id
+          }
+
+          console.log("-----")
+          console.log(bookTags)
+          console.log("------")
+
+          $.ajax("/tags", {
+            type: 'POST',
+            data: bookTags,
+          }).then( 
+            function (){
+            console.log("posted!!!")
+            location.reload(true);
+          })
         }
       )
 
@@ -104,8 +123,7 @@ $(document).ready(function () {
     }
   })
 
-  
-     });
+
   // PUT REQUESTS
 
   //Remove tag in DropDown box
@@ -120,14 +138,14 @@ $(document).ready(function () {
     // const removeTag = {
     //   id: tagID,
     // }
-        // $.ajax("/tags/ + tagID", {
-      //   type: 'PUT',
-      //   data: removeTag,
-      // }).then(
-      //   function(){
-      //     location.reload(true);
-      //   }
-      // )
+    // $.ajax("/tags/ + tagID", {
+    //   type: 'PUT',
+    //   data: removeTag,
+    // }).then(
+    //   function(){
+    //     location.reload(true);
+    //   }
+    // )
   })
 
 
@@ -144,14 +162,14 @@ $(document).ready(function () {
     // const deleteTag = {
     //   id: tagID,
     // }
-        // $.ajax("/tags/ + tagID", {
-      //   type: 'DELETE',
-      //   data: deleteTag,
-      // }).then(
-      //   function(){
-      //     location.reload(true);
-      //   }
-      // )
+    // $.ajax("/tags/ + tagID", {
+    //   type: 'DELETE',
+    //   data: deleteTag,
+    // }).then(
+    //   function(){
+    //     location.reload(true);
+    //   }
+    // )
 
   })
 
@@ -168,35 +186,35 @@ $(document).ready(function () {
     // const noTag = {
     //   where: *?,
     // }
-        // $.ajax("/tags", {
-      //   type: 'GET',
-      //   data: noTag,
-      // }).then(
-      //   function(){
-      //     location.reload(true);
-      //   }
-      // )
+    // $.ajax("/tags", {
+    //   type: 'GET',
+    //   data: noTag,
+    // }).then(
+    //   function(){
+    //     location.reload(true);
+    //   }
+    // )
   })
 
-    //All Bookmark Tag
-    $("#allBookmarks").on("click", function (event) {
-      event.preventDefault();
-      console.log("You have click tag: all bookmarks Btn")
-      //Do something
-  
-      //const allBM = select all URLS
-      //const allBooks = {
-      //   where: *?,
-      // }
-          // $.ajax("/tags", {
-        //   type: 'GET',
-        //   data: allBooks,
-        // }).then(
-        //   function(){
-        //     location.reload(true);
-        //   }
-        // )
-    })
+  //All Bookmark Tag
+  $("#allBookmarks").on("click", function (event) {
+    event.preventDefault();
+    console.log("You have click tag: all bookmarks Btn")
+    //Do something
+
+    //const allBM = select all URLS
+    //const allBooks = {
+    //   where: *?,
+    // }
+    // $.ajax("/tags", {
+    //   type: 'GET',
+    //   data: allBooks,
+    // }).then(
+    //   function(){
+    //     location.reload(true);
+    //   }
+    // )
+  })
 
   //Generated Tag Btn
   $(".generatedTag").on('click', function (event) {
@@ -208,14 +226,14 @@ $(document).ready(function () {
     // const tagSelection = {
     //   where: btnValue 
     // }
-        // $.ajax("/tags", {
-      //   type: 'GET',
-      //   data: tagSelection,
-      // }).then(
-      //   function(){
-      //     location.reload(true);
-      //   }
-      // )
+    // $.ajax("/tags", {
+    //   type: 'GET',
+    //   data: tagSelection,
+    // }).then(
+    //   function(){
+    //     location.reload(true);
+    //   }
+    // )
   })
 
   //Log Out Button
@@ -229,10 +247,10 @@ $(document).ready(function () {
     //   data: {action:'logout'},
     //   success: function(data){
     //   alert(data);
-             //location.reload();
-          //window.location.href = data;
-  //     }
-  // });
+    //location.reload();
+    //window.location.href = data;
+    //     }
+    // });
   })
 
 
