@@ -17,16 +17,12 @@ module.exports = function(app){
     });
 
     // Members page (dashboard)
-    app.get('/members/:id', function (req, res) {
-        // if (req.user) {
-        //     res.redirect("/members");
-        // }
-        //console.log(chalk.magenta((req.user)))
-        console.log(req.params.id)
+    app.get('/members', function (req, res) {
+        
         const query = {
             id: 2 
         }
-       db.User.findOne({
+        db.User.findOne({
            where: query,
            include: [
             {
