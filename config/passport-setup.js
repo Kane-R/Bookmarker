@@ -19,7 +19,6 @@ passport.use(
         console.log(chalk.green(profile.photos[0].value));
         //console.log(accessToken);
 
-
         db.User.findOrCreate({
             where: {
                 googleId: profile.id,
@@ -37,7 +36,6 @@ passport.use(
                 name: user.displayName,
                 avatar: user.avatar
             } 
-            
             const patronString = JSON.stringify(patron)
 
             fs.writeFile('./public/details.json', patronString, err => {
@@ -47,7 +45,6 @@ passport.use(
                     console.log('Success, JSON File has been written')
                 }
             })
-
             done(err, user);
         });
     }
