@@ -26,4 +26,10 @@ router.get('/google/redirect', passport.authenticate('google'),(req,res) => {
     res.redirect('/members')
 });
 
+router.get('/logout', (req, res) => {
+    // handle with passport
+    req.logout();
+    res.redirect('/');  
+});
+
 module.exports = router;

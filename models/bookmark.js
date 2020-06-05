@@ -11,8 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     Bookmark.belongsTo(models.User, {
       foreignKey: {
         name: "userID",
-        allowNull: false
-      }
+        allowNull: false,
+      }, 
+      
     })
     Bookmark.belongsToMany(models.Tag, { through: 'bookmark_tags',
       onDelete: "CASCADE"

@@ -1,4 +1,29 @@
 .fontPM {
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: rgb(82, 82, 76) 2px 2px;
+}
+
+.sansPM {
     font-family: 'Source Sans Pro';
     text-shadow: rgb(82, 82, 76) 2px 2px;
 }
+
+.menuBtn {
+    position: absolute;
+    bottom: 0.8em;
+    right: 1em;
+}
+
+.menu-dropdown {
+    position: absolute;
+    bottom: -5.5em;
+    right: -0.5em
+}
+
+.xBtn {
+    position: absolute;
+    top: 1em; 
+    right: 1em;
+    
+}
+

@@ -16,19 +16,6 @@ module.exports = function(app) {
   });
 
 
-  // delete a bookmark
-  // app.delete("/bookmarks", function(req, res) {
-  //   db.Bookmark.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //   .then(function(dbBookmark) {
-  //     res.json(dbBookmark);
-  //   });
-  // });
-
-
   //add tags - Need to define bookmark relation - WORKING
   app.post("/tags", function(req, res) {
    
@@ -50,29 +37,21 @@ module.exports = function(app) {
         });
   });
 
-  // //add bookmark_tags - Need to define bookmark relation
-  // app.post("/tags", function(req, res) {
-   
-  
-  // });
-
-  //add tag in relation to bookmark
-
-
-
   //delete a tag completely from all related bookmarks
 
-  app.delete("/tags/:id", function(req, res) {
+  // app.delete("/tags_delete", function(req, res) {
     
-    db.Tag.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(function(dbTag) {
-      res.json(dbTag);
-    });
-  });
+  //   console.log(req.body.id)
+    
+  //   db.Tag.destroy({
+  //     where: {
+  //       id: req.body.id
+  //   }
+  // })
+  //   .then(function(dbTag) {
+  //     res.json(dbTag);
+  //   });
+  // });
 
   //delete a tag specific to a bookmark - WORKING
   app.delete("/bookmark_tags", function(req,res) {
@@ -88,6 +67,22 @@ module.exports = function(app) {
     })
 
   })
+
+    //delete a tag specific to a bookmark
+    app.delete("/bookmark_del", function(req,res) {
+
+      console.log("this is userID: " + req.body.id + " this is url: " +req.body.url)
+      db.Bookmark.destroy({
+        where: {
+          userID: req.body.id,
+          url: req.body.url
+        }
+      })
+      .then(function(dbBookmark) {
+        res.json(dbBookmark)
+      })
+  
+    })
 
   app.get("/bookmark_tags", function(req,res) {
 

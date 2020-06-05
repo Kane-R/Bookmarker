@@ -36,6 +36,16 @@ $(document).ready(function () {
     $("#" + close).toggleClass("hidden")
   })
 
+  //PopBox X button
+  $(".popEnd").on("click", function(event){
+    event.preventDefault();
+    const {
+      remove
+    } = $(this).data();
+    console.log(remove);
+    $("#" + remove).toggleClass("hidden");
+  })
+
   // POST REQUESTS
 
   //Add BookMark bar - WORKING
@@ -77,10 +87,8 @@ $(document).ready(function () {
   $(document).on('submit', '.createTagForm', function (event) {
     event.preventDefault();
     regexp = /^[a-z ,.'-]+$/i
-    let {
-      number
-    } = $(this).data();
-
+    
+    let {number} = $(this).data();
     console.log(number);
     console.log($("#" + number).val().trim());
     let tagName = $("#" + number).val().trim()
@@ -157,27 +165,51 @@ $(document).ready(function () {
       )
   })
 
+  //Remove bookmark
+  $(".xBtn").on('click', function (event) {
+   event.preventDefault()
+   
+   const { cross } = $(this).data();
+   const { user } = $(this).data();
+   console.log(cross)
+   console.log(user)
+
+    let urlX = {
+      url: cross, 
+      id: user }
+
+    $.ajax("/bookmark_del", {
+        type: 'DELETE',
+        data: urlX
+      }).then(
+        function(){
+          console.log("deleted BookMark URL: " + cross);
+          location.reload(true);
+        }
+      )
+  });
+
   //Generated Tag Delete 'Yes'
-  $(".delYesBtn").on('click', function (event) {
-    event.preventDefault();
-    console.log("Delete btn clicked")
+  // $(".delYesBtn").on('click', function (event) {
+  //   event.preventDefault();
+  //   console.log("Delete btn clicked")
 
-    ////ID still needs to be inserted into HTML
-    //const tagID = $(event.target).data("id") 
-    //console.log(tagID)
-    // const deleteTag = {
-    //   id: tagID,
-    // }
-    // $.ajax("/tags/ + tagID", {
-    //   type: 'DELETE',
-    //   data: deleteTag,
-    // }).then(
-    //   function(){
-    //     location.reload(true);
-    //   }
-    // )
+  //   //ID still needs to be inserted into HTML
+  //   const tagID = $(event.target).data("id") 
+  //   console.log(tagID)
+  //   const deleteTag = {
+  //     id: tagID,
+  //   }
+  //   $.ajax("/tags_delete", {
+  //     type: 'DELETE',
+  //     data: deleteTag,
+  //   }).then(
+  //     function(){
+  //       location.reload(true);
+  //     }
+  //   )
 
-  })
+  // })
 
 
   // GET REQUESTS ???
@@ -235,7 +267,7 @@ $(document).ready(function () {
 
   //Log Out Button
   $("#logOut").on("click", function (event) {
-    event.preventDefault();
+    
     console.log("Log Out Button Pushed");
     // Do something
 
@@ -249,5 +281,7 @@ $(document).ready(function () {
     //     }
     // });
   })
+
+  
 
 });
