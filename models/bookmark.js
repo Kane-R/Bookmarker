@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     })
     Bookmark.belongsToMany(models.Tag, { through: 'bookmark_tags',
-      onDelete: "cascade"
+      onDelete: "CASCADE"
     })
   };
   return Bookmark;

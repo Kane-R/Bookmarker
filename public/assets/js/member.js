@@ -73,17 +73,17 @@ $(document).ready(function () {
     });
   })
 
-  //Create Tag in DropDown box
+  //Create Tag in DropDown box 
   $(document).on('submit', '.createTagForm', function (event) {
     event.preventDefault();
     regexp = /^[a-z ,.'-]+$/i
-    const {
+    let {
       number
     } = $(this).data();
 
     console.log(number);
     console.log($("#" + number).val().trim());
-    const tagName = $("#" + number).val().trim()
+    let tagName = $("#" + number).val().trim()
 
     let tag = {
       name: tagName,
@@ -126,26 +126,32 @@ $(document).ready(function () {
 
   // PUT REQUESTS
 
-  //Remove tag in DropDown box
+  //Remove tag in DropDown box for Bookmar - WORKING
   $(".removeBtn").on('click', function (event) {
     event.preventDefault();
     console.log("remove btn clicked")
     //Do something
+    
+    let tagNo = $(this).data("id") 
+    let bookNo = $(this).data("bookmark")
+    console.log(tagNo)
+    console.log(bookNo);
 
-    ////ID still needs to be inserted into HTML
-    //const tagID = $(event.target).data("id") 
-    //console.log(tagID)
-    // const removeTag = {
-    //   id: tagID,
-    // }
-    // $.ajax("/tags/ + tagID", {
-    //   type: 'PUT',
-    //   data: removeTag,
-    // }).then(
-    //   function(){
-    //     location.reload(true);
-    //   }
-    // )
+    let tagRemove = {
+      tagID: tagNo,
+      bookmarkID: bookNo
+    }
+    
+    
+    $.ajax("/bookmark_tags", {
+      type: 'DELETE',
+      data: tagRemove
+    }).then(
+      function(){
+        console.log("deleted tag id: " + tagNo);
+        location.reload(true);
+      }
+    )
   })
 
 
@@ -182,7 +188,7 @@ $(document).ready(function () {
     console.log("You have click tag: No Tag Btn")
     //Do something
 
-    //const noTags = select all where no tag?
+    // const noTags = select all where no tag?
     // const noTag = {
     //   where: *?,
     // }
@@ -202,9 +208,9 @@ $(document).ready(function () {
     console.log("You have click tag: all bookmarks Btn")
     //Do something
 
-    //const allBM = select all URLS
-    //const allBooks = {
-    //   where: *?,
+    // // const allBM = select all URLS
+    // const allBooks = {
+    //   where: "*?",
     // }
     // $.ajax("/tags", {
     //   type: 'GET',
