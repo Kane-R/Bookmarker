@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     
     Tag.belongsToMany(models.Bookmark, { through: 'bookmark_tags',
-      onDelete: "cascade"
+      onDelete: "CASCADE"
     })
 
   };

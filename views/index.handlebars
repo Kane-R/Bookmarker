@@ -53,18 +53,18 @@
                         <span>{{this.name}}</span>
                     </button>
                     {{!-- bin --}}
-                    <button class="ml-2 fill-current hover:text-red-200 binBtn" data-open="{{@index}}Bin">
+                    <button class="ml-2 fill-current hover:text-red-200 binBtn" data-open="{{id}}Bin">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path class="heroicon-ui"
                                 d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z" />
                         </svg>
                     </button>
                     <div class="hidden z-50 w-32 h-16 ml-64 items-center text-center justify-center bg-black text-xs font-extrabold text-white rounded-lg shadow-lg p-2"
-                        style="position:absolute; top:-5em; right:-6em" id="{{@index}}Bin">
+                        style="position:absolute; top:-5em; right:-6em" id="{{id}}Bin">
                         <p class="w-full mb-2">Delete Tag?</p>
-                        <button class="bg-green-600 w-12 h-7 font-bold rounded-lg text-center delYesBtn">Yes</button>
+                        <button class="bg-green-600 w-12 h-7 font-bold rounded-lg text-center delYesBtn" data-id="{{id}}">Yes</button>
                         <button class="bg-red-600 w-12 h-7 font-bold rounded-lg text-center delNoBtn"
-                            data-close="{{@index}}Bin">No</button>
+                            data-close="{{id}}Bin">No</button>
                     </div>
                 </li>
 
@@ -102,7 +102,7 @@
                     <div class="items-center flex">
                         <span
                             class="absolute top-0 right-0 w-12 h-12 mb-5 text-sm text-white inline-flex items-center mr-6">
-                            <img class="mr-6 mb-5 rounded-full" src="./assets/img/default.jpg" alt="portfolio icon"
+                            <img class="mr-6 mb-5 rounded-full" src="{{avatar}}" alt="portfolio icon"
                                 class="w-full rounded-full align-middle border-none shadow-lg" /></span>
                     </div>
                 </a>
@@ -124,7 +124,7 @@
         <div class="col-span-2 px-10 flex flex-wrap">
 
             {{#each Bookmarks}}
-            <div class="relative mx-5 my-3 px-3 w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
+            <div class="relative mx-5 my-3 px-3 md:w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
                 <img class="w-56 rounded-lg flex m-auto mt-3" src="https://besticon-demo.herokuapp.com/icon?url={{this.url}}&size=80..120..200"
                     alt="Sunset in the mountains"></button>
                 <div class="px-6 py-1">
@@ -180,7 +180,8 @@
 
                                         {{!-- X symbol --}}
                                         <button id="{{name}}Delete"
-                                            class="fill-current text-center hover:text-red-700 removeBtn">
+                                            class="fill-current text-center hover:text-red-700 removeBtn"
+                                            data-id = "{{id}}" data-bookmark="{{../id}}">
                                             <svg class="w-6 h-6 stroke-current stroke-2"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <path class="heroicon-ui"
