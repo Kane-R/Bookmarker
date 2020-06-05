@@ -4,7 +4,6 @@
   "description": "Bookmarkr - sort your bookmarks",
   "main": "server.js",
   "scripts": {
-    "build": "postcss public/css/tailwind.css -o public/build/tailwind.css",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
