@@ -124,9 +124,9 @@
         <div class="col-span-2 px-10 flex flex-wrap">
 
             {{#each Bookmarks}}
-            <div class="relative mx-5 my-3 px-3 w-64 rounded-lg shadow-2xl bg-blue-100">
+            <div class="relative mx-5 my-3 px-3 w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
                 <img class="w-56 rounded-lg flex m-auto mt-3" src="https://besticon-demo.herokuapp.com/icon?url={{this.url}}&size=80..120..200"
-                    alt="Sunset in the mountains" href="{{this.url}}"></button>
+                    alt="Sunset in the mountains"></button>
                 <div class="px-6 py-1">
                     <div class="font-bold text-xl text-center mb-1">
                         Water Painting
@@ -160,7 +160,7 @@
                                 for="form{{this.id}}">Create & Remove tags</label>
                             <input
                                 class="w-10/12 flex mx-auto box-border shadow appearance-none py-1 px-1 m-3 border rounded text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline createTag"
-                                id="{{this.id}}"  type="text" placeholder="News">
+                                id="{{this.id}}" type="text" placeholder="News">
                         </form>
                         <form name="dropDown{{@index}}">
                             <label class="w-full text-xs font-mono tracking-tight text-center text-gray-700"
