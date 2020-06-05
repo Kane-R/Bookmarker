@@ -1,4 +1,10 @@
 .fontPM {
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: rgb(82, 82, 76) 2px 2px;
+}
+
+.sansPM {
     font-family: 'Source Sans Pro';
     text-shadow: rgb(82, 82, 76) 2px 2px;
 }
+
