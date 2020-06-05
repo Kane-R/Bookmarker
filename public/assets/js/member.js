@@ -122,39 +122,39 @@ $(document).ready(function () {
     }
   })
 
-
   // PUT REQUESTS
+
+  //DELETE REQUESTS
+    
+  //use api route to delete line in bookmark_tag join table and therefore remove from bookmark
 
   //Remove tag in DropDown box for Bookmar - WORKING
   $(".removeBtn").on('click', function (event) {
     event.preventDefault();
     console.log("remove btn clicked")
-    //Do something
     
+    //Get the tag ID and bookmark ID from button 
     let tagNo = $(this).data("id") 
     let bookNo = $(this).data("bookmark")
     console.log(tagNo)
     console.log(bookNo);
 
+    //move id's to send to ajax
     let tagRemove = {
       tagID: tagNo,
       bookmarkID: bookNo
     }
-    
-    
+
     $.ajax("/bookmark_tags", {
-      type: 'DELETE',
-      data: tagRemove
-    }).then(
-      function(){
-        console.log("deleted tag id: " + tagNo);
-        location.reload(true);
-      }
-    )
+        type: 'DELETE',
+        data: tagRemove
+      }).then(
+        function(){
+          console.log("deleted tag id: " + tagNo);
+          location.reload(true);
+        }
+      )
   })
-
-
-  //DELETE REQUESTS
 
   //Generated Tag Delete 'Yes'
   $(".delYesBtn").on('click', function (event) {
@@ -201,30 +201,21 @@ $(document).ready(function () {
     // )
   })
 
-  //All Bookmark Tag
+  //All Bookmark Tag - 
   $("#allBookmarks").on("click", function (event) {
     event.preventDefault();
     console.log("You have click tag: all bookmarks Btn")
     //Do something
 
-    // // const allBM = select all URLS
-    // const allBooks = {
-    //   where: "*?",
-    // }
-    // $.ajax("/tags", {
-    //   type: 'GET',
-    //   data: allBooks,
-    // }).then(
-    //   function(){
-    //     location.reload(true);
-    //   }
-    // )
+    res.redirect("/members")
+    
   })
+
 
   //Generated Tag Btn
   $(".generatedTag").on('click', function (event) {
     event.preventDefault();
-    const btnValue = $(this).val()
+    const btnValue = $(this).data("id")
     console.log("You have click tag: " + btnValue)
     //Do Something
 
@@ -257,7 +248,5 @@ $(document).ready(function () {
     //     }
     // });
   })
-
-
 
 });

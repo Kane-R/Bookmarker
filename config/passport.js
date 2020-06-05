@@ -45,11 +45,10 @@ passport.use(
                     console.log('Success, JSON File has been written')
                 }
             })
-            done(err, user);
+            return done(err, user);
         });
     }
 
-   
 ));
 
 // In order to help keep authentication state across HTTP requests,

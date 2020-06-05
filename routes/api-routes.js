@@ -3,7 +3,7 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-  // POST route for saving a new bookmark
+  // POST route for saving a new bookmark - WORKING
   app.post("/bookmarks", function(req, res) {
     console.log(req.body);
     db.Bookmark.create({
@@ -14,6 +14,7 @@ module.exports = function(app) {
         res.json(dbBookmark);
       });
   });
+
 
   // delete a bookmark
   // app.delete("/bookmarks", function(req, res) {
@@ -28,7 +29,7 @@ module.exports = function(app) {
   // });
 
 
-  //add tags - Need to define bookmark relation
+  //add tags - Need to define bookmark relation - WORKING
   app.post("/tags", function(req, res) {
    
     console.log(req.body);
@@ -73,9 +74,7 @@ module.exports = function(app) {
     });
   });
 
-
-
-  //delete a tag specific to a bookmark
+  //delete a tag specific to a bookmark - WORKING
   app.delete("/bookmark_tags", function(req,res) {
 
     db.Bookmark_Tag.destroy({
@@ -90,9 +89,18 @@ module.exports = function(app) {
 
   })
 
+  app.get("/bookmark_tags", function(req,res) {
 
+    db.Bookmark_Tag.findOne({
+      where: {
+        tagID: req.body.tagID
+      }
+    })
+    .then(function(dbBookmark_Tag) {
+      res.json(dbBookmark_Tag)
+    })
 
-
+  })
 
   //get all tags for user
 
