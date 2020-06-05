@@ -77,9 +77,8 @@ $(document).ready(function () {
   $(document).on('submit', '.createTagForm', function (event) {
     event.preventDefault();
     regexp = /^[a-z ,.'-]+$/i
-    let {
-      number
-    } = $(this).data();
+    let { number } = $(this).data();
+    let {  }
 
     console.log(number);
     console.log($("#" + number).val().trim());
