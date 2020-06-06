@@ -1,7 +1,5 @@
 # Project2 BookMark Application #
 
-![Gif](assets/obama.gif)
-
 ## About The Page ## 
 
 ## Built With ##
@@ -9,7 +7,7 @@
     Node 
     Express
     HTML 
-    CSS 
+    TailwindCSS
     Bootstrap
     VS Code
     Passport
