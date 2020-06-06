@@ -29,7 +29,7 @@ module.exports = function(app) {
         res.json(dbTag);
       });
 
-      db.Bookmark_Tag.create({
+      db.bookmark_tag.create({
         bookmarkID: req.body.bookID,
         tagID: req.body.tagID
       }).then(function(dbTag) {        
@@ -56,7 +56,7 @@ module.exports = function(app) {
   //delete a tag specific to a bookmark - WORKING
   app.delete("/bookmark_tags", function(req,res) {
 
-    db.Bookmark_Tag.destroy({
+    db.bookmark_tag.destroy({
       where: {
         tagID: req.body.tagID,
         bookmarkID: req.body.bookmarkID
@@ -86,7 +86,7 @@ module.exports = function(app) {
 
   app.get("/bookmark_tags", function(req,res) {
 
-    db.Bookmark_Tag.findOne({
+    db.bookmark_tag.findOne({
       where: {
         tagID: req.body.tagID
       }
