@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="./assets/css/member.css">
 <div class="min-h-full md:flex font-body bg-blue-400">
-
     {{!-- mobile nav bar --}}
     <nav class="block md:hidden bg-gray-400 p-2">
         <div class="w-full flex items-center justify-between w-full whitespace-no-wrap h-12">
@@ -9,7 +8,6 @@
                 BookMark-R</h1>
         </div>
     </nav>
-
     {{!-- side bar start here --}}
     <nav class="flex-wrap inline-flex container hidden md:block w-1/5 shadow-l bg-gray-400 items-center py-4 px-2">
         <div class="w-full conatiner inline-flex items-center w-full whitespace-no-wrap">
@@ -77,16 +75,13 @@
                             data-close="{{id}}Bin">No</button>
                     </div>
                 </li>
-
                 {{/each}}
                 {{/each}}
             </ul>
         </div>
     </nav>
-
     {{!-- Main Page --}}
     <div class="flex-1 flex-row align-middle w-full grid grid-cols-2">
-
         <nav class="w-full flex block items-center justify-between px-2 py-1 col-span-1 bg-blue-400">
             <form class="md:w-5/6 md:mt-2" name="addBookmark" id="addBookmark">
                 <label
@@ -129,12 +124,10 @@
                 </div>
             </ul>
         </nav>
-
         {{!-- Cards --}}
-        <div class="col-span-2 px-10 inline-flex bg-blue-400 flex-wrap">
-
+        <div class="col-span-2 px-10 w-full inline-flex bg-blue-400 flex-wrap">
             {{#each Bookmarks}}
-            <div class="relative mx-5 my-3 px-3 md:w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
+            <div class="relative mx-5 my-3 px-3 w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
                 <button class="z-20 xBtn" data-cross="{{this.url}}" data-user="{{../id}}">
                     <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="heroicon-ui"
@@ -165,7 +158,6 @@
                                 d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.56 8.93l6.37-2.12a1 1 0 0 1 1.26 1.26l-2.12 6.37a1 1 0 0 1-.63.63l-6.37 2.12a1 1 0 0 1-1.26-1.26l2.12-6.37a1 1 0 0 1 .63-.63zm-.22 5.73l4-1.33 1.32-4-4 1.34-1.32 4z" />
                         </svg></button>
                     {{!-- drop down box --}}
-
                     <nav class="hidden flex-col text-center z-50 w-12 mr-3 bg-yellow-500 font-mono font-bold text-base list-none rounded-lg shadow-lg menu-dropdown shadow-2xl"
                         style="min-width: 12rem;" id="{{@index}}dropDown">
                           <button class="fill-current float-right ml-2 text-red-400 hover:text-gray-700 popEnd m-2" data-remove="{{@index}}dropDown">
@@ -198,7 +190,6 @@
                                                 d="M2.59 13.41A1.98 1.98 0 0 1 2 12V7a5 5 0 0 1 5-5h4.99c.53 0 1.04.2 1.42.59l8 8a2 2 0 0 1 0 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8zM20 12l-8-8H7a3 3 0 0 0-3 3v5l8 8 8-8zM7 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
                                         </svg>
                                         <span class="mx-2">{{this.name}}</span>
-
                                         {{!-- X symbol --}}
                                         <button id="{{name}}Delete"
                                             class="fill-current text-center hover:text-red-700 removeBtn"
@@ -215,14 +206,18 @@
                             </ul>
                             {{/each}}
                         </form>
-
                     </nav>
-
                 </div>
             </div>
             {{/each}}
-
         </div>{{!-- end of grid --}}
     </div> {{!-- page container --}}
-
     <script src="./assets/js/member.js"></script>
+
+
+
+
+
+
+
+
