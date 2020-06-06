@@ -14,14 +14,15 @@ Creating an application that can be used to write, save, and delete 
     CSS 
     Bootstrap
     VS Code
-    Passport 
+    Passport
+    Heroku
 
 
 ### Installation ###
 
     Clone the repo
 
-git clone 
+git clone https://github.com/Kane-R/Project2
 
 ## Contributing ##
 
@@ -36,7 +37,7 @@ git clone
 Distributed under the MIT License. See LICENSE for more information.
 Contact
 
-Project Link: https://github.com/Mitchelle-B/repo
+Project Link: https://divdiv-bookmarkr.herokuapp.com/
 
 ## Acknowledgements ##
 
