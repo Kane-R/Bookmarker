@@ -10,8 +10,8 @@ router.get('/login', (req, res) => {
 
 // auth logout
 router.get('/logout', (req, res) => {
-    // handle with passport
-    res.send('logging out');
+    req.logout();
+    res.redirect('/'); 
 });
 
 // auth with google+
@@ -24,12 +24,6 @@ router.get('/google/redirect', passport.authenticate('google'),(req,res) => {
 
     //console.log(chalk.blue(JSON.stringify[req.query]))
     res.redirect('/members')
-});
-
-router.get('/logout', (req, res) => {
-    // handle with passport
-    req.logout();
-    res.redirect('/');  
 });
 
 module.exports = router;
