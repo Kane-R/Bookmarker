@@ -4,8 +4,6 @@
 
 ## About The Page ## 
 
-Creating an application that can be used to write, save, and delete notes. The application uses an express backend to save and retrieve note data from a JSON file.
-
 ## Built With ##
 
     Node 
