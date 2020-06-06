@@ -24,17 +24,17 @@ module.exports = function(app){
             }
             try {
                 const user = JSON.parse(jsonString)
-                console.log("User is:", user.id) 
+                //console.log("User is:", user.id) 
                 let query = user.id
-                console.log("fs userID" + query);
-                db.User.findOne({
+                //console.log("fs userID" + query);
+                db.user.findOne({
                     where: query,
                     include: [
                      {
-                         model: db.Bookmark,
+                         model: db.bookmark,
                          include: [
                              {
-                                 model: db.Tag,
+                                 model: db.tag,
                              }
                          ],
                  }]

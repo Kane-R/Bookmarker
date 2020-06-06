@@ -1,15 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const user = sequelize.define('user', {
     googleId: DataTypes.STRING,
     displayName: DataTypes.STRING,
     avatar: DataTypes.STRING
   }, {});
-  User.associate = function(models) {
+  user.associate = function(models) {
     // associations can be defined here
 
-    User.hasMany(models.Bookmark, {
+    user.hasMany(models.bookmark, {
       onDelete: "cascade"
     })
   };
-  return User;
+  return user;
 };

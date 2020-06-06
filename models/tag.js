@@ -1,15 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Tag = sequelize.define('Tag', {
+  const tag = sequelize.define('tag', {
     name: DataTypes.STRING
   }, {});
-  Tag.associate = function(models) {
+  tag.associate = function(models) {
     // associations can be defined here
     
-    Tag.belongsToMany(models.Bookmark, { through: 'bookmark_tags',
+    tag.belongsToMany(models.bookmark, { through: 'bookmark_tags',
       onDelete: "CASCADE"
     })
 
   };
-  return Tag;
+  return tag;
 };

@@ -6,7 +6,7 @@ module.exports = function(app) {
   // POST route for saving a new bookmark - WORKING
   app.post("/bookmarks", function(req, res) {
     console.log(req.body);
-    db.Bookmark.create({
+    db.bookmark.create({
       url: req.body.url,
       userID: req.body.userID
     })
@@ -22,7 +22,7 @@ module.exports = function(app) {
     console.log(req.body);
    
     //find or create?
-    db.Tag.create({
+    db.tag.create({
       name: req.body.name
     })
       .then(function(dbTag) {
@@ -72,7 +72,7 @@ module.exports = function(app) {
     app.delete("/bookmark_del", function(req,res) {
 
       console.log("this is userID: " + req.body.id + " this is url: " +req.body.url)
-      db.Bookmark.destroy({
+      db.bookmark.destroy({
         where: {
           userID: req.body.id,
           url: req.body.url
@@ -100,7 +100,7 @@ module.exports = function(app) {
   //get all tags for user
 
   app.get("/bookmarks", function(req, res) {
-    db.Bookmark.findAll()
+    db.bookmark.findAll()
   })
 
   // app.get("/tags", function(req,res) {})
@@ -109,8 +109,4 @@ module.exports = function(app) {
 
   //get all bookmarks that don't have a tag
   
-
-
 }
-
-

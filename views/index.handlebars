@@ -48,8 +48,8 @@
                 <h6 class="md:min-w-full text-gray-700 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                     Available Tags
                 </h6>
-                {{#each Bookmarks}}
-                {{#each Tags}}
+                {{#each bookmarks}}
+                {{#each tags}}
                 <li class="inline-block w-full m-2 relative" id="{{this.name}}tagBtn">
                     <button
                         class="text-white block py-1 px-3 bg-pink-500 w-2/3 inline-flex align-middle justify-between hover:bg-yellow-400 hover:text-black text-xs text-white font-bold py-2 px-5 rounded generatedTag"
@@ -133,7 +133,7 @@
         {{!-- Cards --}}
         <div class="col-span-2 px-10 inline-flex bg-blue-400 flex-wrap">
 
-            {{#each Bookmarks}}
+            {{#each bookmarks}}
             <div class="relative mx-5 my-3 px-3 md:w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
                 <button class="z-20 xBtn" data-cross="{{this.url}}" data-user="{{../id}}">
                     <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@
                         href="{{this.url}}" target="_blank">{{this.url}}</a>
                 </div>
                 <div class="px-2 pb-3 pt-2 justify-between">
-                    {{#each Tags}}
+                    {{#each tags}}
                     <span
                         class="items-center inline-block inline-flex align-middle justify-between bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-1"
                         id={{this.id}}>
@@ -186,7 +186,7 @@
                         <form name="dropDown{{@index}}">
                             <label class="w-full text-xs font-mono tracking-tight text-center text-gray-700"
                                 for="addTag{{@index}}">Assigned Tags</label>
-                            {{#each Tags}}
+                            {{#each tags}}
                             <ul class="list-none">
                                 <li class="w-10/12 inline-block flex float-left m-2 ml-3 mx-auto rounded-lg"
                                     id="{{this.name}}tagBtn">

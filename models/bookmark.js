@@ -1,23 +1,23 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Bookmark = sequelize.define('bookmark', {
+  const bookmark = sequelize.define('bookmark', {
     url: DataTypes.STRING,
     clickCount: DataTypes.INTEGER,
     userID: DataTypes.INTEGER
   }, {});
-  Bookmark.associate = function(models) {
+  bookmark.associate = function(models) {
     // associations can be defined here
 
-    Bookmark.belongsTo(models.User, {
+    bookmark.belongsTo(models.user, {
       foreignKey: {
         name: "userID",
         allowNull: false,
       }, 
       
     })
-    Bookmark.belongsToMany(models.Tag, { through: 'bookmark_tags',
+    bookmark.belongsToMany(models.tag, { through: 'bookmark_tags',
       onDelete: "CASCADE"
     })
   };
-  return Bookmark;
+  return bookmark;
 };

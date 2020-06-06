@@ -19,7 +19,7 @@ passport.use(
        // console.log(chalk.green(profile.photos[0].value));
         //console.log(accessToken);
 
-        db.User.findOrCreate({
+        db.user.findOrCreate({
             where: {
                 googleId: profile.id,
             },
@@ -29,7 +29,7 @@ passport.use(
 
             },
         }).then(([user], err) => {
-           // console.log(chalk.blue(JSON.stringify(user)))
+           //console.log(chalk.blue(JSON.stringify(user)))
             
             const patron = {
                 id: user.id,
