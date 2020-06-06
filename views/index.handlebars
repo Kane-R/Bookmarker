@@ -130,13 +130,15 @@
             {{#each bookmarks}}
             <div class="relative mx-5 my-3 px-3 md:w-1/5   justify-between rounded-lg shadow-2xl bg-blue-100">
                 <button class="z-20 xBtn" data-cross="{{this.url}}" data-user="{{../id}}">
-                    <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="heroicon-ui"
                             d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
                     </svg></button>
-                <img class="w-56 rounded-lg flex m-auto mt-6"
-                    src="https://besticon-demo.herokuapp.com/icon?url={{this.url}}&size=80..120..200"
-                    alt="urlLogo"></button>
+                <a href="{{this.url}}" target="_blank">
+                    <img class="w-56 rounded-lg flex m-auto mt-6"
+                        src="https://besticon-demo.herokuapp.com/icon?url={{this.url}}&size=80..120..200"
+                        alt="urlLogo"></a>
                 <div class="px-6 py-1">
                     <a class="w-full inline-block text-blue-600 text-base text-center font-mono break-all"
                         href="{{this.url}}" target="_blank">{{this.url}}</a>
@@ -159,32 +161,34 @@
                                 d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.56 8.93l6.37-2.12a1 1 0 0 1 1.26 1.26l-2.12 6.37a1 1 0 0 1-.63.63l-6.37 2.12a1 1 0 0 1-1.26-1.26l2.12-6.37a1 1 0 0 1 .63-.63zm-.22 5.73l4-1.33 1.32-4-4 1.34-1.32 4z" />
                         </svg></button>
                     {{!-- drop down box --}}
-                    <nav class="hidden flex-col text-center z-50 w-12 mr-3 bg-yellow-500 font-mono font-bold text-base list-none rounded-lg shadow-lg menu-dropdown shadow-2xl"
+                    <nav class="hidden box-border border-2 border-yellow-500 text-center z-50 w-12 mr-3 bg-yellow-500 font-mono font-bold text-base list-none rounded-lg menu-dropdown round mx-2 mt-2"
                         style="min-width: 12rem;" id="{{@index}}dropDown">
-                          <button class="fill-current float-right ml-2 text-red-400 hover:text-gray-700 popEnd m-2" data-remove="{{@index}}dropDown">
-                                            <svg class="w-6 h-6 stroke-current stroke-2"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path class="heroicon-ui"
-                                                    d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
-                                            </svg>
-                                        </button>
-                        <form class="createTagForm" data-number="{{this.id}}">
-                           
-                            <p class="w-full text-xs font-mono tracking-tight text-gray-700 text-center my-3"
+                        <button class="fill-current inline-flex float-right text-red-400 hover:text-gray-700 popEnd"
+                            data-remove="{{@index}}dropDown">
+                            <svg class="w-6 h-6 stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path class="heroicon-ui"
+                                    d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
+                            </svg>
+                        </button>
+                        <form class="tracking-tight justify-evenly createTagForm" data-number="{{this.id}}">
+
+                            <p class="w-full inline-block text-center text-sm font-mono tracking-tight text-gray-700"
                                 for="form{{this.id}}">Create & Remove tags</p>
                             <input
-                                class="w-10/12 flex mx-auto box-border shadow appearance-none py-1 px-1 m-3 border rounded text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline createTag"
-                                id="{{this.id}}" type="text" placeholder="News">
+                                class="w-10/12 flex mx-auto box-border shadow appearance-none py-1 px-1 m-1 border rounded text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline createTag"
+                                id="{{this.id}}" type="text" placeholder="News" maxlength="10">
+                            <p style="font-size: xx-small" class="font-sans text-gray-700 text-center">Max length of 10 characters</p>
                         </form>
+                 
                         <form name="dropDown{{@index}}">
-                            <label class="w-full text-xs font-mono tracking-tight text-center text-gray-700"
+                            <label class="w-full text-xs font-mono tracking-tight text-center text-gray-700 mb-5"
                                 for="addTag{{@index}}">Assigned Tags</label>
                             {{#each tags}}
                             <ul class="list-none">
-                                <li class="w-10/12 inline-block flex float-left m-2 ml-3 mx-auto rounded-lg"
+                                <li class="w-10/12 inline-block align-middle mb-3 mx-auto rounded-lg"
                                     id="{{this.name}}tagBtn">
-                                    <p
-                                        class="items-center inline-block inline-flex align-middle justify-between text-white bg-green-500 w-full text-xs text-white font-bold py-2 px-2 rounded">
+                                    <p class="items-center inline-block inline-flex align-middle justify-between text-white bg-green-500 w-full text-xs text-white font-bold py-2 px-2 rounded">
                                         <svg class="w-4 h-4 stroke-current stroke-2 text-gray-700"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                             <path class="heroicon-ui"
@@ -201,7 +205,6 @@
                                                     d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
                                             </svg>
                                         </button>
-                                        
                                     </p>
                                 </li>
                             </ul>
@@ -214,11 +217,3 @@
         </div>{{!-- end of grid --}}
     </div> {{!-- page container --}}
     <script src="./assets/js/member.js"></script>
-
-
-
-
-
-
-
-

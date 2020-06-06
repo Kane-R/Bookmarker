@@ -55,20 +55,24 @@ $(document).ready(function () {
     let tagInput = $("#bookmarkInput").val().trim();
     let tagVal = tagInput.toLowerCase() 
 
+    if ((tagVal.length >= 5 ) && (tagVal.substr(0, 5) != 'http:') && (tagVal.substr(0, 5) != 'https') ) {
+       const bookURL = 'http://' + tagVal;
+     
+
     console.log("---------")
-    console.log(tagInput)
+    console.log(bookURL)
     console.log("---------")
     console.log(tagVal)
     console.log("---------")
 
-    
+
     $.getJSON("details.json", function (json) {
 
       console.log("This is the YOUR USER ID: " + json.id)
 
       const bookmark = {
         userID: json.id,
-        url: tagVal,
+        url: bookURL,
       }
 
       if (regexp.test(tagVal)) {
@@ -83,12 +87,12 @@ $(document).ready(function () {
             location.reload(true);
           }
         )
-
       } else {
         console.log("false");
         //Do an alert here
       }
     });
+  }
   })
 
   //Create Tag in DropDown box 
