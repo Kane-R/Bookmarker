@@ -3,7 +3,9 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-  // POST route for saving a new bookmark - WORKING
+  // CREATE SOMETHING
+
+  // CREATE a new bookmark - WORKING
   app.post("/bookmarks", function(req, res) {
     console.log(req.body);
     db.bookmark.create({
@@ -16,7 +18,7 @@ module.exports = function(app) {
   });
 
 
-  //POST route for saving a new tag - WORKING
+  //CREATE a new tag - WORKING
   app.post("/tags", function(req, res) {
    
     console.log(req.body);
@@ -37,26 +39,10 @@ module.exports = function(app) {
         });
   });
 
-  //delete a tag completely from all related bookmarks
 
-  app.delete("/tags_delete" ,function(req,res){
-  db.bookmark_tag.destroy({
-    where: { 
-      tagID: req.body.id
-    }
-    }).then(function(result) {
-      db.tag.destroy({
-        where: { 
-          id: req.body.id
-        }
-        }).then(function(result2) {
-          console.log("This tag is delete")
-        res.json({one: result, two: result2})
-    })
-  })
-  });
+  //DELETE SOMETHING
 
-  //delete a tag specific to a bookmark - WORKING
+  //DELETE a tag specific to a bookmark - WORKING
   app.delete("/bookmark_tags", function(req,res) {
 
     db.bookmark_tag.destroy({
@@ -68,10 +54,27 @@ module.exports = function(app) {
     .then(function(dbBookmark_Tag) {
       res.json(dbBookmark_Tag)
     })
-
   })
 
-    //delete a tag specific to a bookmark - WORKING
+  //DELETE a tag completely from all related bookmarks - WORKING
+  app.delete("/tags_delete" ,function(req,res){
+    db.bookmark_tag.destroy({
+      where: { 
+        tagID: req.body.id
+      }
+      }).then(function(result) {
+        db.tag.destroy({
+          where: { 
+            id: req.body.id
+          }
+          }).then(function(result2) {
+            console.log("This tag is delete")
+          res.json({one: result, two: result2})
+      })
+    })
+    });
+
+    //DELETE a BOOKMARK - WORKING
     app.delete("/bookmark_del", function(req,res) {
 
       console.log("URL is " + req.body.url + " userID is " + req.body.id + " and bookmarkID is " + req.body.bookmarkID)
@@ -95,36 +98,7 @@ module.exports = function(app) {
     })
 
 
-    // console.log("this is userID: " + req.body.id + " this is url: " +req.body.url)
-      
-      // app.get("/bookmark_tags", function(req,res) {
-
-      //   db.bookmark_tag.findOne({
-      //     where: {
-      //       tagID: req.body.tagID
-      //     }
-      //   })
-      //   .then(function(dbBookmark_Tag) {
-      //     res.json(dbBookmark_Tag)
-      //   })
-     
-     
-     
-      // db.bookmark.destroy({
-      //   where: {
-      //     userID: req.body.id,
-      //     url: req.body.url
-      //   }
-      // })
-      // .then(function(dbBookmark) {
-      //   res.json(dbBookmark)
-      // })
-  
-    //})
-
-  
-
-
+// GET SOMETHING
 
   //get all tags for user
 
