@@ -51,7 +51,7 @@
                 <li class="inline-block w-full m-2 relative" id="{{this.name}}tagBtn">
                     <button
                         class="text-white block py-1 px-3 bg-pink-500 w-2/3 inline-flex align-middle justify-between hover:bg-yellow-400 hover:text-black text-xs text-white font-bold py-2 px-5 rounded generatedTag"
-                        value="{{this.name}}" data-id="{{id}}">
+                        value="{{this.name}}" data-id="{{this.id}}">
                         <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             width="24" height="24">
                             <path class="heroicon-ui"
@@ -128,9 +128,9 @@
         <div class="col-span-2 px-10 inline-flex bg-blue-400 w-full flex-wrap">
 
             {{#each bookmarks}}
-            <div class="relative mx-5 my-3 px-3 md:w-1/5   justify-between rounded-lg shadow-2xl bg-blue-100">
-                <button class="z-20 xBtn" data-cross="{{this.url}}" data-user="{{../id}}">
-                    <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600"
+            <div class="relative mx-5 my-3 px-3 md:w-1/5 justify-between rounded-lg shadow-2xl bg-blue-100">
+                <button class="z-20 xBtn" data-url="{{this.url}}" data-userid="{{../id}}" data-bookid="{{this.id}}">
+                    <svg class="w-8 h-8 fill-current shadow-2xl text-green-500 hover:text-red-600 hover:shadow-outline "
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="heroicon-ui"
                             d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />

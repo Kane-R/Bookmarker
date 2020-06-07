@@ -1,12 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  let bookmark_tag = sequelize.define('bookmark_tag', {
+  let bookmark_Tag = sequelize.define('bookmark_tag', {
     bookmarkID: DataTypes.INTEGER,
     tagID: DataTypes.INTEGER
   }, {});
   
-  bookmark_tag.associate = function(models) {
+  bookmark_Tag.associate = function(models) {
     // associations can be defined here
   };
-  return bookmark_tag;
+  return bookmark_Tag;
 };

@@ -16,12 +16,12 @@ module.exports = function(app) {
   });
 
 
-  //add tags - Need to define bookmark relation - WORKING
+  //POST route for saving a new tag - WORKING
   app.post("/tags", function(req, res) {
    
     console.log(req.body);
    
-    //find or create?
+    //find or create? (next update?)
     db.tag.create({
       name: req.body.name
     })
@@ -39,19 +39,22 @@ module.exports = function(app) {
 
   //delete a tag completely from all related bookmarks
 
-  // app.delete("/tags_delete", function(req, res) {
-    
-  //   console.log(req.body.id)
-    
-  //   db.Tag.destroy({
-  //     where: {
-  //       id: req.body.id
-  //   }
-  // })
-  //   .then(function(dbTag) {
-  //     res.json(dbTag);
-  //   });
-  // });
+  app.delete("/tags_delete" ,function(req,res){
+  db.bookmark_tag.destroy({
+    where: { 
+      tagID: req.body.id
+    }
+    }).then(function(result) {
+      db.tag.destroy({
+        where: { 
+          id: req.body.id
+        }
+        }).then(function(result2) {
+          console.log("This tag is delete")
+        res.json({one: result, two: result2})
+    })
+  })
+  });
 
   //delete a tag specific to a bookmark - WORKING
   app.delete("/bookmark_tags", function(req,res) {
@@ -68,34 +71,60 @@ module.exports = function(app) {
 
   })
 
-    //delete a tag specific to a bookmark
+    //delete a tag specific to a bookmark - WORKING
     app.delete("/bookmark_del", function(req,res) {
 
-      console.log("this is userID: " + req.body.id + " this is url: " +req.body.url)
-      db.bookmark.destroy({
-        where: {
-          userID: req.body.id,
-          url: req.body.url
-        }
-      })
-      .then(function(dbBookmark) {
-        res.json(dbBookmark)
-      })
-  
-    })
+      console.log("URL is " + req.body.url + " userID is " + req.body.id + " and bookmarkID is " + req.body.bookmarkID)
 
-  app.get("/bookmark_tags", function(req,res) {
-
-    db.bookmark_tag.findOne({
-      where: {
-        tagID: req.body.tagID
+      db.bookmark_tag.destroy({
+      where: { 
+        bookmarkID: req.body.bookmarkID
       }
-    })
-    .then(function(dbBookmark_Tag) {
-      res.json(dbBookmark_Tag)
+      }).then(function(result) {
+        db.bookmark.destroy({
+          where: { 
+            userID: req.body.id,
+            url: req.body.url,
+            id: req.body.bookmarkID
+          }
+          }).then(function(result2) {
+            console.log("This bookmark is delete")
+          res.json({one: result, two: result2})
+      })
+      })
     })
 
-  })
+
+    // console.log("this is userID: " + req.body.id + " this is url: " +req.body.url)
+      
+      // app.get("/bookmark_tags", function(req,res) {
+
+      //   db.bookmark_tag.findOne({
+      //     where: {
+      //       tagID: req.body.tagID
+      //     }
+      //   })
+      //   .then(function(dbBookmark_Tag) {
+      //     res.json(dbBookmark_Tag)
+      //   })
+     
+     
+     
+      // db.bookmark.destroy({
+      //   where: {
+      //     userID: req.body.id,
+      //     url: req.body.url
+      //   }
+      // })
+      // .then(function(dbBookmark) {
+      //   res.json(dbBookmark)
+      // })
+  
+    //})
+
+  
+
+
 
   //get all tags for user
 

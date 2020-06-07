@@ -95,7 +95,7 @@ $(document).ready(function () {
   }
   })
 
-  //Create Tag in DropDown box 
+  //Add Tag
   $(document).on('submit', '.createTagForm', function (event) {
     event.preventDefault();
     regexp = /^[a-z ,.'-]+$/i
@@ -143,12 +143,6 @@ $(document).ready(function () {
     }
   })
 
-  // PUT REQUESTS
-
-  //DELETE REQUESTS
-    
-  //use api route to delete line in bookmark_tag join table and therefore remove from bookmark
-
   //Remove tag in DropDown box for Bookmar - WORKING
   $(".removeBtn").on('click', function (event) {
     event.preventDefault();
@@ -181,47 +175,52 @@ $(document).ready(function () {
   $(".xBtn").on('click', function (event) {
    event.preventDefault()
    
-   const { cross } = $(this).data();
-   const { user } = $(this).data();
-   console.log(cross)
-   console.log(user)
+   const url = $(this).data("url"); //url
+   const bookid = $(this).data("bookid"); //bookmarkID
+   const userid = $(this).data("userid"); //userID
+   
+   console.log(url)
+   console.log(bookid)
+   console.log(userid)
 
     let urlX = {
-      url: cross, 
-      id: user }
+      bookmarkID: bookid,
+      url: url, 
+      id: userid }
 
     $.ajax("/bookmark_del", {
         type: 'DELETE',
         data: urlX
       }).then(
         function(){
-          console.log("deleted BookMark URL: " + cross);
+          console.log("deleted BookMark URL: " + url);
           location.reload(true);
         }
       )
   });
 
   //Generated Tag Delete 'Yes'
-  // $(".delYesBtn").on('click', function (event) {
-  //   event.preventDefault();
-  //   console.log("Delete btn clicked")
+  $(".delYesBtn").on('click', function (event) {
+    event.preventDefault();
+    console.log("Delete btn clicked")
 
-  //   //ID still needs to be inserted into HTML
-  //   const tagID = $(event.target).data("id") 
-  //   console.log(tagID)
-  //   const deleteTag = {
-  //     id: tagID,
-  //   }
-  //   $.ajax("/tags_delete", {
-  //     type: 'DELETE',
-  //     data: deleteTag,
-  //   }).then(
-  //     function(){
-  //       location.reload(true);
-  //     }
-  //   )
+    //ID still needs to be inserted into HTML
+    const tagID = $(this).data("id") 
+    console.log(tagID)
+    const deleteTag = {
+      id: tagID,
+    }
+    
+    $.ajax("/tags_delete", {
+      type: 'DELETE',
+      data: deleteTag,
+    }).then(
+      function(){
+        location.reload(true);
+      }
+    )
 
-  // })
+  })
 
 
   // GET REQUESTS ???
@@ -278,22 +277,8 @@ $(document).ready(function () {
   })
 
   //Log Out Button
-  $("#logOut").on("click", function (event) {
-    
-    console.log("Log Out Button Pushed");
-    // Do something
-
-    // $.ajax({
-    //   type: 'GET',
-    //   data: {action:'logout'},
-    //   success: function(data){
-    //   alert(data);
-    //location.reload();
-    //window.location.href = data;
-    //     }
-    // });
+  $("#logOut").on("click", function (event) { 
+   console.log("Log Out Button Pushed");
   })
-
-  
 
 });

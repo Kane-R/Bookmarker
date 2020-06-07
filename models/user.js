@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     user.hasMany(models.bookmark, {
-      onDelete: "cascade"
+      onDelete: "cascade",
     })
   };
   return user;
